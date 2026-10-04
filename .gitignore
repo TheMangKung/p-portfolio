@@ -24,3 +24,12 @@ dist-ssr
 *.sw?
 *.backup.*
 .vite
+
+# Auto-protected ignores
+node_modules/
+.env
+*.env
+dist/
+build/
+*.tmp
+Thumbs.db

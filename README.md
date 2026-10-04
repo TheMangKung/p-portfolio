@@ -1,6 +1,8 @@
 # Fastwork Portfolio - Next-Gen Edition 🚀
 > เว็บไซต์ Portfolio ระดับพรีเมียม สไตล์ [fastwork.com](https://fastwork.com/) (Next-Gen Creator Platform) สำหรับ **P (@p_dev) — Senior Full-Stack Developer & UI/UX Designer**
 
+> 🤖 **สำหรับ AI Agent (Antigravity):** ดูสรุปบริบทและขั้นตอนทำต่อได้ที่ [ANTIGRAVITY_HANDOVER.md](file:///D:/Projects/p-portfolio/ANTIGRAVITY_HANDOVER.md)
+
 ---
 
 ## 🌟 ฟีเจอร์เด่นของโปรเจกต์ (Key Features)
