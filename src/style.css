@@ -69,15 +69,17 @@ body {
   pointer-events: auto;
   width: min(984px, 100%);
   height: 52px;
-  background: #1b1f28;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 22, 32, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 9999px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.22);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 8px 0 22px;
-  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .fw-nav-brand {
@@ -109,35 +111,15 @@ body {
 .fw-nav-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.fw-nav-lang-btn {
-  height: 38px;
-  background: #343a47;
-  color: #ffffff;
-  border: none;
-  border-radius: 9999px;
-  padding: 0 14px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13.5px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: inherit;
-  transition: background 0.2s ease, transform 0.2s ease;
-}
-
-.fw-nav-lang-btn:hover {
-  background: #424959;
 }
 
 .fw-nav-get-started-btn {
   height: 38px;
-  background: #11141b;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 9999px;
   padding: 0 20px;
   display: inline-flex;
@@ -146,13 +128,16 @@ body {
   font-weight: 700;
   cursor: pointer;
   font-family: inherit;
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease;
 }
 
 .fw-nav-get-started-btn:hover {
-  background: #000000;
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #ffffff;
+  color: #0b0f19;
+  border-color: #ffffff;
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.35);
 }
 
 @media (max-width: 640px) {
@@ -167,15 +152,10 @@ body {
   .fw-nav-logo-text {
     font-size: 17px;
   }
-  .fw-nav-lang-btn {
-    height: 34px;
-    padding: 0 10px;
-    font-size: 12.5px;
-  }
   .fw-nav-get-started-btn {
     height: 34px;
-    padding: 0 14px;
-    font-size: 12.5px;
+    padding: 0 16px;
+    font-size: 13px;
   }
 }
 

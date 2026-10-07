@@ -242,18 +242,6 @@ tabButtons.forEach(btn => {
 });
 
 // =======================================================
-// Fastwork Floating Navbar Language Switcher & Smooth Links
-// =======================================================
-const langBtn = document.getElementById('lang-switch-btn');
-const langText = document.getElementById('lang-text');
-let currentLang = 'EN';
-if (langBtn && langText) {
-  langBtn.addEventListener('click', () => {
-    currentLang = currentLang === 'EN' ? 'TH' : 'EN';
-    langText.textContent = currentLang;
-  });
-}
-
 // Smooth scroll to profile when clicking "แนะนำตัว & ประวัติ ↓"
 document.querySelectorAll('a[href="#about"]').forEach((link) => {
   link.addEventListener('click', (e) => {
