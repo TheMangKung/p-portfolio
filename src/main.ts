@@ -2,6 +2,10 @@ import './style.css';
 import { PROJECT_TILES_DATA, ProjectCardData } from './Experience/World/ProjectTiles';
 import confetti from 'canvas-confetti';
 import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // =======================================================
 // 1. Initialize Lenis Smooth Scroll
@@ -109,37 +113,59 @@ lenis.on('scroll', handleScrollMotion);
 handleScrollMotion(); // Initial tick
 
 // =======================================================
-// Staggered Cinematic Reveal for Case Studies (#works) via IntersectionObserver
+// GSAP Staggered Cinematic Spring Reveal for Case Studies (#works)
 // =======================================================
-const worksSection = document.getElementById('works');
-const worksHead = document.querySelector('.section-head-center') as HTMLElement | null;
-const workCards = document.querySelectorAll('.work-card');
+lenis.on('scroll', ScrollTrigger.update);
 
-if (worksSection) {
-  const worksObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        // Trigger staggered spring entrance
-        if (worksHead) worksHead.classList.add('is-visible');
-        workCards.forEach((card, idx) => {
-          setTimeout(() => {
-            (card as HTMLElement).classList.add('is-visible');
-          }, idx * 150);
-        });
-      } else {
-        // If user scrolls back up past #works, reset so it re-animates smoothly
-        if (entry.boundingClientRect.top > window.innerHeight) {
-          if (worksHead) worksHead.classList.remove('is-visible');
-          workCards.forEach((card) => {
-            (card as HTMLElement).classList.remove('is-visible');
-          });
-        }
-      }
-    });
-  }, { threshold: 0.12 });
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0);
 
-  worksObserver.observe(worksSection);
-}
+// 1. Reveal Section Header with Blur Dissolve
+gsap.fromTo('.section-head-center', 
+  {
+    y: 55,
+    opacity: 0,
+    filter: 'blur(10px)'
+  },
+  {
+    y: 0,
+    opacity: 1,
+    filter: 'blur(0px)',
+    duration: 0.9,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '#works',
+      start: 'top 82%',
+      toggleActions: 'play none none reverse'
+    }
+  }
+);
+
+// 2. Pop up the 3 Project Cards ONE BY ONE with Spring Elastic Bounce!
+gsap.fromTo('.work-card',
+  {
+    y: 130,
+    opacity: 0,
+    scale: 0.86,
+    rotateX: 18
+  },
+  {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    rotateX: 0,
+    duration: 1.05,
+    stagger: 0.22, // 220ms delay: Card 1 -> Card 2 -> Card 3 pops up sequentially!
+    ease: 'back.out(1.5)', // Elastic spring bounce!
+    scrollTrigger: {
+      trigger: '.works-grid',
+      start: 'top 85%', // Fires precisely when the cards grid enters viewport!
+      toggleActions: 'play none none reverse'
+    }
+  }
+);
 
 // =======================================================
 // Interactive 3D Magnetic Tilt & Cursor Glare on Work Cards
@@ -148,25 +174,39 @@ document.querySelectorAll('.work-card').forEach((card) => {
   const htmlCard = card as HTMLElement;
 
   htmlCard.addEventListener('mousemove', (e) => {
-    htmlCard.dataset.isHovered = 'true';
     const rect = htmlCard.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    // Smooth tilt (max 7 degrees)
-    const rotateX = ((y - centerY) / centerY) * -7;
-    const rotateY = ((x - centerX) / centerX) * 7;
+    // Smooth tilt (max 8 degrees)
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
 
     htmlCard.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
     htmlCard.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
-    htmlCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px) scale3d(1.025, 1.025, 1.025)`;
+
+    gsap.to(htmlCard, {
+      rotateX: rotateX,
+      rotateY: rotateY,
+      y: -10,
+      scale: 1.025,
+      duration: 0.3,
+      ease: 'power2.out',
+      transformPerspective: 1000
+    });
   });
 
   htmlCard.addEventListener('mouseleave', () => {
-    htmlCard.dataset.isHovered = 'false';
-    htmlCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)';
+    gsap.to(htmlCard, {
+      rotateX: 0,
+      rotateY: 0,
+      y: 0,
+      scale: 1,
+      duration: 0.5,
+      ease: 'power3.out'
+    });
   });
 });
 
