@@ -1049,21 +1049,6 @@ body {
   opacity: 1;
 }
 
-.live-pulse-dot {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10b981;
-  margin-right: 6px;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
-  animation: pulseLive 2s infinite ease-in-out;
-}
-
-@keyframes pulseLive {
-  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25); }
-  50% { transform: scale(1.25); opacity: 0.85; box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.05); }
-}
 
 .work-card-banner {
   height: 220px;
