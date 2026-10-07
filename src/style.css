@@ -997,12 +997,32 @@ body {
   margin: 0 auto 60px auto;
 }
 
+.about-section-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fw-blue);
+  background: var(--fw-blue-light);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
 .section-head-title {
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.02em;
-  margin-top: 8px;
+  margin-top: 4px;
+}
+
+.section-head-desc {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin-top: 10px;
+  line-height: 1.6;
 }
 
 .works-grid {

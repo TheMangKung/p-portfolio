@@ -122,49 +122,54 @@ gsap.ticker.add((time) => {
 });
 gsap.ticker.lagSmoothing(0);
 
-// 1. Reveal Section Header with Blur Dissolve
-gsap.fromTo('.section-head-center', 
-  {
-    y: 55,
-    opacity: 0,
-    filter: 'blur(10px)'
-  },
-  {
-    y: 0,
-    opacity: 1,
-    filter: 'blur(0px)',
-    duration: 0.9,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: '#works',
-      start: 'top 82%',
-      toggleActions: 'play none none reverse'
-    }
+// 1. Choreographed GSAP Timeline: Text lines reveal first right after profile fades, followed by cards popping up one by one!
+const worksTimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#works',
+    start: 'top 75%',
+    toggleActions: 'play none none reverse'
   }
+});
+
+// Step 1: "VERIFIED CASE STUDIES"
+worksTimeline.fromTo('.works-section .about-section-tag',
+  { y: 30, opacity: 0 },
+  { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' }
 );
 
-// 2. Pop up the 3 Project Cards ONE BY ONE with Spring Elastic Bounce!
-gsap.fromTo('.work-card',
+// Step 2: "ผลงานจริงที่เปิดให้บริการแล้ว" with blur dissolve
+worksTimeline.fromTo('.works-section .section-head-title',
+  { y: 38, opacity: 0, filter: 'blur(8px)' },
+  { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.65, ease: 'power3.out' },
+  '-=0.3'
+);
+
+// Step 3: "ระบบที่ผ่านการทดสอบและรองรับผู้ใช้งานจริงระดับโปรดักชัน"
+worksTimeline.fromTo('.works-section .section-head-desc',
+  { y: 25, opacity: 0 },
+  { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out' },
+  '-=0.35'
+);
+
+// Step 4: 3 Project Cards pop up sequentially one by one with spring bounce!
+worksTimeline.fromTo('.works-section .work-card',
   {
-    y: 130,
+    y: 110,
     opacity: 0,
-    scale: 0.86,
-    rotateX: 18
+    scale: 0.88,
+    rotateX: 16
   },
   {
     y: 0,
     opacity: 1,
     scale: 1,
     rotateX: 0,
-    duration: 1.05,
-    stagger: 0.22, // 220ms delay: Card 1 -> Card 2 -> Card 3 pops up sequentially!
-    ease: 'back.out(1.5)', // Elastic spring bounce!
-    scrollTrigger: {
-      trigger: '.works-grid',
-      start: 'top 85%', // Fires precisely when the cards grid enters viewport!
-      toggleActions: 'play none none reverse'
-    }
-  }
+    duration: 0.95,
+    stagger: 0.18, // Card 1 -> Card 2 -> Card 3
+    ease: 'back.out(1.4)', // Elastic spring bounce
+    transformPerspective: 1000
+  },
+  '-=0.15'
 );
 
 // =======================================================
