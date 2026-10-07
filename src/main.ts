@@ -1,5 +1,4 @@
 import './style.css';
-import { Experience } from './Experience/Experience';
 import { PROJECT_TILES_DATA, ProjectCardData } from './Experience/World/ProjectTiles';
 import confetti from 'canvas-confetti';
 import Lenis from 'lenis';
@@ -18,12 +17,6 @@ function raf(time: number) {
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
-
-// =======================================================
-// 2. Initialize Three.js Ambient WebGL Experience
-// =======================================================
-const canvas = document.getElementById('webgl-canvas') as HTMLCanvasElement;
-const experience = new Experience(canvas);
 
 // =======================================================
 // 3. Orbit Cards Scatter Motion on Scroll
@@ -126,11 +119,6 @@ if (projectModal) {
     if (e.target === projectModal) closeProjectModal();
   });
 }
-
-// Hook 3D Tile Click
-experience.onProjectSelect = (data) => {
-  openProjectModal(data);
-};
 
 // Hook HTML Project Card Buttons
 document.querySelectorAll('.open-project-btn').forEach((btn) => {
