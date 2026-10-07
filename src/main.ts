@@ -4,7 +4,9 @@ import { PROJECT_TILES_DATA, ProjectCardData } from './Experience/World/ProjectT
 import confetti from 'canvas-confetti';
 import Lenis from 'lenis';
 
+// =======================================================
 // 1. Initialize Lenis Smooth Scroll
+// =======================================================
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -17,11 +19,79 @@ function raf(time: number) {
 }
 requestAnimationFrame(raf);
 
-// 2. Initialize Three.js WebGL Experience
+// =======================================================
+// 2. Initialize Three.js Ambient WebGL Experience
+// =======================================================
 const canvas = document.getElementById('webgl-canvas') as HTMLCanvasElement;
 const experience = new Experience(canvas);
 
-// 3. Project Detail Modal Logic
+// =======================================================
+// 3. Orbit Cards Scatter Motion on Scroll
+// =======================================================
+const heroCenter = document.getElementById('hero-center');
+const cardTopLeft = document.querySelector('.pos-top-left') as HTMLElement | null;
+const cardBottomLeft = document.querySelector('.pos-bottom-left') as HTMLElement | null;
+const cardTopRight = document.querySelector('.pos-top-right') as HTMLElement | null;
+const cardBottomRight = document.querySelector('.pos-bottom-right') as HTMLElement | null;
+const cardMidLeft = document.querySelector('.pos-mid-left') as HTMLElement | null;
+const cardMidRight = document.querySelector('.pos-mid-right') as HTMLElement | null;
+
+function handleScrollMotion() {
+  const scrollY = window.scrollY || window.pageYOffset;
+  const maxScroll = Math.max(window.innerHeight * 0.55, 320);
+  const p = Math.min(Math.max(scrollY / maxScroll, 0), 1); // 0 to 1
+
+  // Scatter Orbit Cards Outward
+  if (cardTopLeft) {
+    cardTopLeft.style.transform = `translate3d(${-260 * p}px, ${-180 * p}px, 0) rotate(${-4 - 12 * p}deg) scale(${1 - 0.25 * p})`;
+    cardTopLeft.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
+    cardTopLeft.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+  }
+
+  if (cardBottomLeft) {
+    cardBottomLeft.style.transform = `translate3d(${-260 * p}px, ${180 * p}px, 0) rotate(${3 + 12 * p}deg) scale(${1 - 0.25 * p})`;
+    cardBottomLeft.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
+    cardBottomLeft.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+  }
+
+  if (cardTopRight) {
+    cardTopRight.style.transform = `translate3d(${260 * p}px, ${-180 * p}px, 0) rotate(${4 + 12 * p}deg) scale(${1 - 0.25 * p})`;
+    cardTopRight.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
+    cardTopRight.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+  }
+
+  if (cardBottomRight) {
+    cardBottomRight.style.transform = `translate3d(${260 * p}px, ${180 * p}px, 0) rotate(${-3 - 12 * p}deg) scale(${1 - 0.25 * p})`;
+    cardBottomRight.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
+    cardBottomRight.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+  }
+
+  if (cardMidLeft) {
+    cardMidLeft.style.transform = `translate3d(${-320 * p}px, ${-40 * p}px, 0) rotate(${2 - 8 * p}deg) scale(${1 - 0.25 * p})`;
+    cardMidLeft.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
+    cardMidLeft.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+  }
+
+  if (cardMidRight) {
+    cardMidRight.style.transform = `translate3d(${320 * p}px, ${40 * p}px, 0) rotate(${-5 + 8 * p}deg) scale(${1 - 0.25 * p})`;
+    cardMidRight.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
+    cardMidRight.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+  }
+
+  // Smooth fade on center hero text
+  if (heroCenter) {
+    heroCenter.style.transform = `translate3d(0, ${-60 * p}px, 0)`;
+    heroCenter.style.opacity = `${Math.max(0, 1 - p * 1.15)}`;
+  }
+}
+
+window.addEventListener('scroll', handleScrollMotion, { passive: true });
+lenis.on('scroll', handleScrollMotion);
+handleScrollMotion(); // Initial tick
+
+// =======================================================
+// 4. Project Detail Modal Logic
+// =======================================================
 const projectModal = document.getElementById('project-detail-modal') as HTMLElement;
 const projectCloseBtn = document.getElementById('project-modal-close') as HTMLElement;
 const modalCode = document.getElementById('detail-code') as HTMLElement;
@@ -32,21 +102,22 @@ const modalStatus = document.getElementById('detail-status') as HTMLElement;
 const modalLiveBtn = document.getElementById('detail-live-btn') as HTMLAnchorElement;
 
 function openProjectModal(data: ProjectCardData) {
-  modalCode.textContent = `[ ${data.code} // SYSTEM SPECS ]`;
-  modalCode.style.color = data.accentColor;
+  if (!projectModal) return;
+  modalCode.textContent = `[ ${data.code} // PRODUCTION SPECS ]`;
+  modalCode.style.color = '#0569ff';
   modalTitle.textContent = data.title;
   modalTagline.textContent = data.tagline;
   modalMetric.textContent = data.metric;
   modalStatus.textContent = data.status;
-  modalStatus.style.color = data.accentColor;
+  modalStatus.style.color = '#10b981';
   modalLiveBtn.href = data.liveUrl;
-  modalLiveBtn.textContent = `OPEN PRODUCTION DEPLOYMENT (${data.title.split(' ')[0]}) ↗`;
+  modalLiveBtn.textContent = `เปิดดูเว็บไซต์จริง (${data.title.split(' ')[0]}) ↗`;
 
   projectModal.style.display = 'flex';
 }
 
 function closeProjectModal() {
-  projectModal.style.display = 'none';
+  if (projectModal) projectModal.style.display = 'none';
 }
 
 if (projectCloseBtn) projectCloseBtn.addEventListener('click', closeProjectModal);
@@ -61,7 +132,7 @@ experience.onProjectSelect = (data) => {
   openProjectModal(data);
 };
 
-// Also Hook HTML Card Clicks
+// Hook HTML Project Card Buttons
 document.querySelectorAll('.open-project-btn').forEach((btn) => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -73,7 +144,9 @@ document.querySelectorAll('.open-project-btn').forEach((btn) => {
   });
 });
 
-// 4. Direct Briefing Modal Logic
+// =======================================================
+// 5. Direct Briefing Modal Logic (Fastwork Style)
+// =======================================================
 const briefModal = document.getElementById('brief-modal') as HTMLElement;
 const briefCloseBtn = document.getElementById('brief-modal-close') as HTMLElement;
 const briefForm = document.getElementById('brief-form') as HTMLFormElement;
@@ -83,13 +156,14 @@ const briefCopyBtn = document.getElementById('brief-copy-btn') as HTMLElement;
 
 function openBriefModal() {
   closeProjectModal();
+  if (!briefModal) return;
   briefModal.style.display = 'flex';
-  briefForm.style.display = 'block';
-  briefSuccess.style.display = 'none';
+  if (briefForm) briefForm.style.display = 'block';
+  if (briefSuccess) briefSuccess.style.display = 'none';
 }
 
 function closeBriefModal() {
-  briefModal.style.display = 'none';
+  if (briefModal) briefModal.style.display = 'none';
 }
 
 document.querySelectorAll('.trigger-brief-btn').forEach((btn) => {
@@ -114,45 +188,36 @@ if (briefForm) {
     const clientService = (document.getElementById('brief-service') as HTMLSelectElement).value;
     const clientDetails = (document.getElementById('brief-details') as HTMLTextAreaElement).value;
 
-    briefSummaryBox.innerHTML = `
-      <div style="margin-bottom:8px;"><strong>CLIENT //</strong> ${clientName}</div>
-      <div style="margin-bottom:8px;"><strong>CONTACT //</strong> ${clientContact}</div>
-      <div style="margin-bottom:8px;"><strong>SCOPE //</strong> ${clientService}</div>
-      <div><strong>SPECIFICATION //</strong> ${clientDetails}</div>
-    `;
+    if (briefSummaryBox) {
+      briefSummaryBox.innerHTML = `
+        <div style="margin-bottom:6px;"><strong>ผู้ติดต่อ:</strong> ${clientName}</div>
+        <div style="margin-bottom:6px;"><strong>ช่องทางติดต่อ:</strong> ${clientContact}</div>
+        <div style="margin-bottom:6px;"><strong>ประเภทงาน:</strong> ${clientService}</div>
+        <div><strong>รายละเอียด:</strong> ${clientDetails}</div>
+      `;
+    }
 
     briefForm.style.display = 'none';
-    briefSuccess.style.display = 'block';
+    if (briefSuccess) briefSuccess.style.display = 'block';
 
+    // Celebration Confetti
     confetti({
-      particleCount: 150,
-      spread: 80,
+      particleCount: 120,
+      spread: 70,
       origin: { y: 0.6 }
     });
 
     if (briefCopyBtn) {
       briefCopyBtn.onclick = () => {
-        const text = `[COMMISSION BRIEF FOR P]\nCLIENT: ${clientName}\nCONTACT: ${clientContact}\nSCOPE: ${clientService}\nDETAILS: ${clientDetails}`;
+        const text = `[บรีฟงานสำหรับ พี]\nผู้ติดต่อ: ${clientName}\nช่องทางติดต่อ: ${clientContact}\nประเภทงาน: ${clientService}\nรายละเอียด: ${clientDetails}`;
         navigator.clipboard.writeText(text);
-        briefCopyBtn.textContent = '✓ COPIED SPECIFICATION TO CLIPBOARD';
+        briefCopyBtn.textContent = '✓ คัดลอกบรีฟลงคลิปบอร์ดแล้ว';
         setTimeout(() => {
-          briefCopyBtn.textContent = 'COPY SPECIFICATION';
+          briefCopyBtn.textContent = 'คัดลอกรายละเอียดบรีฟ';
         }, 2500);
       };
     }
   });
 }
 
-// 5. Live Telemetry Clock (Bangkok UTC+7)
-function updateClock() {
-  const clockEl = document.getElementById('live-clock');
-  if (clockEl) {
-    const now = new Date();
-    const pad = (n: number) => String(n).padStart(2, '0');
-    clockEl.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} BKK`;
-  }
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-console.log('🚀 Brutalist Three.js Portfolio Engine Initialized successfully.');
+console.log('✨ Clean White Fastwork Portfolio with Orbit Scroll Motion initialized successfully.');

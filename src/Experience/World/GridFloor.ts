@@ -9,13 +9,13 @@ export class GridFloor {
   constructor() {
     this.experience = Experience.getInstance();
 
-    // Brutalist Wireframe Ground Grid
+    // Subtle Wireframe Ground Grid for white aesthetic
     const size = 40;
     const divisions = 40;
-    this.gridHelper = new THREE.GridHelper(size, divisions, 0x00f0ff, 0x1f242d);
+    this.gridHelper = new THREE.GridHelper(size, divisions, 0xbfdbfe, 0xe2e8f0);
     this.gridHelper.position.y = -3.2;
     (this.gridHelper.material as THREE.Material).transparent = true;
-    (this.gridHelper.material as THREE.Material).opacity = 0.25;
+    (this.gridHelper.material as THREE.Material).opacity = 0.35;
     this.experience.scene.add(this.gridHelper);
 
     // Subtle background dust / floating technical nodes

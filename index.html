@@ -1,348 +1,633 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>P // Senior Full-Stack &amp; Creative Architect (Brutalist Three.js Portfolio)</title>
+  <title>พี (P) // Senior Full-Stack &amp; Web Architect | ผลงานและบริการทำเว็บไซต์</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
-  <!-- Three.js WebGL Interactive Canvas -->
+  <!-- Ambient 3D WebGL Background Canvas -->
   <canvas id="webgl-canvas"></canvas>
 
-  <!-- Content Layer Overlay -->
+  <!-- Main Application Content -->
   <div id="app-content">
-    
-    <!-- Top Telemetry Header -->
-    <header class="site-header">
-      <a href="#" class="brand-logo interactive">
-        <div class="brand-sq"></div>
-        <span>P.DEV // ARCHITECT</span>
+
+    <!-- Top Fastwork Navigation Bar -->
+    <header class="site-nav">
+      <a href="#" class="nav-brand">
+        <img src="/selling/sellers/web-developer/avatar.jpg" alt="P Avatar" class="nav-avatar" />
+        <div class="nav-brand-text">
+          <span class="brand-name">P // Full-Stack Architect</span>
+          <span class="brand-badge">✓ VERIFIED CREATOR &amp; DEVELOPER</span>
+        </div>
       </a>
 
-      <div class="telemetry-row">
-        <span>[SYS_OK <span class="status-dot"></span> AVAILABLE FOR COMMISSIONS]</span>
-        <span>[LOC: 13°45'N 100°30'E // BANGKOK]</span>
-        <span id="live-clock" class="cyan">--:--:-- BKK</span>
-      </div>
+      <nav class="nav-center-links">
+        <a href="#hero" class="nav-link">หน้าแรก</a>
+        <a href="#about" class="nav-link">แนะนำตัว &amp; ประวัติ</a>
+        <a href="#works" class="nav-link">ผลงานจริง</a>
+        <a href="#services" class="nav-link">บริการ &amp; แพ็กเกจ</a>
+      </nav>
 
-      <div class="header-actions">
-        <a href="#work" class="btn-raw interactive">SYSTEMS</a>
-        <a href="#stack" class="btn-raw interactive">STACK</a>
-        <button class="btn-raw primary trigger-brief-btn interactive">SEND BRIEF ↗</button>
+      <div class="nav-actions">
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>พร้อมรับงาน (Online)</span>
+        </div>
+        <button class="btn-fw-primary trigger-brief-btn">
+          ส่งบรีฟงาน ↗
+        </button>
       </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="hero">
-      <div>
-        <div class="hero-meta">
-          <span class="tag-badge cyan">ARCHITECTURAL EDITION // 2026</span>
-          <span class="tag-badge emerald">100% PRODUCTION PROVEN</span>
+    <!-- =======================================================
+         HERO STAGE: "เว็บไซต์ที่คุณต้องการ เราทำได้" + Orbit Cards
+    ======================================================= -->
+    <section class="hero-stage" id="hero">
+      
+      <!-- Orbit Floating Project Cards (Fly/scatter outward on scroll) -->
+      <div class="orbit-track" id="orbit-track">
+
+        <!-- Card 1: Top Left - Sangjan -->
+        <div class="orbit-item pos-top-left" data-orbit-id="sangjan">
+          <div class="orbit-project-card open-project-btn" data-project-id="sangjan">
+            <div class="orbit-card-img-wrap">
+              <img src="/selling/hero/weng-cover.jpg" alt="Sangjan Live Screen" class="orbit-card-img" />
+              <span class="orbit-card-tag">COMMERCIAL SAAS</span>
+            </div>
+            <div class="orbit-card-body">
+              <div class="orbit-card-header">
+                <img src="/selling/hero/weng-avatar.jpg" alt="Sangjan" class="orbit-card-avatar" />
+                <span class="orbit-card-author">Sangjan Platform</span>
+              </div>
+              <div class="orbit-card-title">ระบบหน้าจอสด Interactive Screen งานคอนเสิร์ต</div>
+              <span class="orbit-card-metric">⚡ Latency &lt; 200ms</span>
+            </div>
+          </div>
         </div>
 
-        <h1 class="hero-title">
-          CRAFTING HIGH-CONCURRENCY SAAS<br>
-          <span class="outline">&amp; IMMERSIVE</span> <span class="accent">3D SYSTEMS.</span>
+        <!-- Card 2: Bottom Left - WUSAB -->
+        <div class="orbit-item pos-bottom-left" data-orbit-id="wusab">
+          <div class="orbit-project-card open-project-btn" data-project-id="wusab">
+            <div class="orbit-card-img-wrap">
+              <img src="/selling/hero/pakincht-cover.jpg" alt="WUSAB.net" class="orbit-card-img" />
+              <span class="orbit-card-tag">ENTERPRISE PORTAL</span>
+            </div>
+            <div class="orbit-card-body">
+              <div class="orbit-card-header">
+                <img src="/selling/hero/pakincht-avatar.jpg" alt="WUSAB" class="orbit-card-avatar" />
+                <span class="orbit-card-author">WUSAB.net</span>
+              </div>
+              <div class="orbit-card-title">พอร์ทัลสโมสรนักศึกษา ม.วลัยลักษณ์ รองรับหลักหมื่นคน</div>
+              <span class="orbit-card-metric">🎓 15,000+ Users</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Top Right - OpenWorld -->
+        <div class="orbit-item pos-top-right" data-orbit-id="openworld">
+          <div class="orbit-project-card open-project-btn" data-project-id="openworld">
+            <div class="orbit-card-img-wrap">
+              <img src="/selling/hero/leobeer-cover.jpg" alt="OpenWorld Check-in" class="orbit-card-img" />
+              <span class="orbit-card-tag">HIGH-CONCURRENCY</span>
+            </div>
+            <div class="orbit-card-body">
+              <div class="orbit-card-header">
+                <img src="/selling/hero/peter-avatar.jpg" alt="OpenWorld" class="orbit-card-avatar" />
+                <span class="orbit-card-author">OpenWorld Scanner</span>
+              </div>
+              <div class="orbit-card-title">ระบบสแกนเช็กชื่อกิจกรรม สแกนไวในเสี้ยววินาที</div>
+              <span class="orbit-card-metric">⚡ &lt; 1 วิ / คน</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Bottom Right - SaaS Dashboard -->
+        <div class="orbit-item pos-bottom-right" data-orbit-id="dashboard">
+          <div class="orbit-project-card">
+            <div class="orbit-card-img-wrap">
+              <img src="/selling/hero/bold-cover.jpg" alt="SaaS Dashboard" class="orbit-card-img" />
+              <span class="orbit-card-tag">ANALYTICS &amp; SAAS</span>
+            </div>
+            <div class="orbit-card-body">
+              <div class="orbit-card-header">
+                <img src="/selling/hero/mod-avatar.jpg" alt="Analytics" class="orbit-card-avatar" />
+                <span class="orbit-card-author">Cloud Analytics</span>
+              </div>
+              <div class="orbit-card-title">แดชบอร์ดบริหารข้อมูล Real-time พร้อมระบบแอดมิน</div>
+              <span class="orbit-card-metric">🔒 99.99% Uptime</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Mid Left - Booking Engine -->
+        <div class="orbit-item pos-mid-left" data-orbit-id="booking">
+          <div class="orbit-project-card">
+            <div class="orbit-card-img-wrap">
+              <img src="/selling/hero/nam-cover.jpg" alt="Booking Engine" class="orbit-card-img" />
+              <span class="orbit-card-tag">BOOKING ENGINE</span>
+            </div>
+            <div class="orbit-card-body">
+              <div class="orbit-card-header">
+                <img src="/selling/hero/nam-avatar.jpg" alt="Booking" class="orbit-card-avatar" />
+                <span class="orbit-card-author">Smart Booking</span>
+              </div>
+              <div class="orbit-card-title">ระบบจองคิว &amp; อีเวนต์ ตรวจสอบสถานะอัตโนมัติ</div>
+              <span class="orbit-card-metric">📅 Sync Real-time</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Mid Right - Creative 3D -->
+        <div class="orbit-item pos-mid-right" data-orbit-id="creative">
+          <div class="orbit-project-card">
+            <div class="orbit-card-img-wrap">
+              <img src="/selling/hero/slayalldeep-cover.jpg" alt="3D Web Experience" class="orbit-card-img" />
+              <span class="orbit-card-tag">CREATIVE 3D WEB</span>
+            </div>
+            <div class="orbit-card-body">
+              <div class="orbit-card-header">
+                <img src="/selling/hero/chapavich-avatar.jpg" alt="3D Creative" class="orbit-card-avatar" />
+                <span class="orbit-card-author">WebGL Engine</span>
+              </div>
+              <div class="orbit-card-title">เว็บไซต์ Interactive 3D ดึงดูดสายตา เพิ่มยอดขาย</div>
+              <span class="orbit-card-metric">✨ 60 FPS Smooth</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Center Hero Content -->
+      <div class="hero-center-content" id="hero-center">
+        <div class="hero-eyebrow">
+          <span>✨ รับพัฒนาเว็บไซต์ &amp; ซอฟต์แวร์ระดับมืออาชีพ</span>
+        </div>
+
+        <h1 class="hero-heading">
+          เว็บไซต์ที่คุณต้องการ<br>
+          <span class="hero-heading-highlight">เราทำได้</span>
         </h1>
 
-        <p class="hero-description">
-          SENIOR SOFTWARE ARCHITECT &amp; UI/UX SPECIALIST. BUILDING RESILIENT FULL-STACK WEB APPLICATIONS, LOW-LATENCY WEBSOCKET ENGINES, AND HUMAN-CRAFTED DIGITAL EXPERIENCES WITH ZERO GENERIC TEMPLATES.
+        <p class="hero-subheading">
+          เปลี่ยนไอเดียและธุรกิจของคุณให้กลายเป็นเว็บไซต์ที่ใช้งานได้จริง รวดเร็ว ปลอดภัย และรองรับผู้ใช้งานพร้อมกันจำนวนมาก ออกแบบเฉพาะ ไม่ใช้เทมเพลตโหล
         </p>
+
+        <div class="hero-cta-group">
+          <button class="btn-fw-primary trigger-brief-btn" style="font-size:16px; height:48px; padding:0 32px;">
+            ปรึกษา &amp; ส่งบรีฟงานฟรี ↗
+          </button>
+          <a href="#about" class="btn-fw-secondary" style="font-size:15px; height:48px; padding:0 28px;">
+            แนะนำตัว &amp; ประวัติ ↓
+          </a>
+        </div>
+
+        <div class="hero-note">
+          ⚡ การันตีตอบกลับภายใน 15 นาที • ประสบการณ์พัฒนา Production จริงรองรับผู้ใช้งาน 15,000+ คน
+        </div>
       </div>
 
-      <div class="hero-hud-controls interactive">
-        <div class="hud-pill">
-          <span class="status-dot"></span>
-          <span>INTERACTIVE 3D GLASS CARDS ACTIVE</span>
-        </div>
-        <div class="hud-pill">
-          <span style="color:var(--accent-cyan);">[MOUSE]</span>
-          <span>TILT &amp; PARALLAX</span>
-        </div>
-        <div class="hud-pill">
-          <span style="color:var(--accent-emerald);">[SCROLL]</span>
-          <span>TRAVEL ARCHITECTURE TRACK</span>
-        </div>
-        <button class="btn-raw primary trigger-brief-btn">COMMISSION PROJECT ↗</button>
-      </div>
     </section>
 
-    <!-- Work Section -->
-    <section class="section-wrapper" id="work">
-      <div class="section-header">
-        <div>
-          <span class="section-num">[ 01 // PRODUCTION ARCHITECTURE ]</span>
-          <h2 class="section-title">VERIFIED CASE STUDIES</h2>
-        </div>
-        <span class="tag-badge cyan">REAL-WORLD DEPLOYMENTS</span>
-      </div>
-
-      <div class="projects-grid">
+    <!-- =======================================================
+         SECTION 2: แนะนำตัว & ประวัติ (Unveiled on scroll)
+    ======================================================= -->
+    <section class="about-section" id="about">
+      <div class="section-container">
         
-        <!-- Project 1: Sangjan -->
-        <article class="raw-project-card">
-          <div>
-            <div class="card-top">
-              <span class="tag-badge cyan">PROJ_01 // COMMERCIAL SAAS</span>
-              <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent-emerald);">REVENUE READY ●</span>
+        <div class="about-grid">
+          
+          <!-- Profile Card -->
+          <div class="about-card-profile">
+            <div class="about-avatar-wrap">
+              <img src="/selling/sellers/web-developer/avatar.jpg" alt="P Developer" class="about-avatar" />
+              <div class="about-verified-badge" title="Verified Pro Developer">✓</div>
             </div>
-            <h3 class="card-title">SANGJAN LIVE SHOUTOUT</h3>
-            <p class="card-tagline">
-              Real-time Interactive Screen &amp; Event Engagement Platform. Allows concert and nightlife audiences to transmit live photos and shoutouts onto massive LED stadium screens instantly.
+
+            <h3 class="about-name">P (พี)</h3>
+            <div class="about-role">Senior Full-Stack &amp; Creative Web Architect</div>
+
+            <div style="display:inline-flex; align-items:center; gap:6px; background:#fef3c7; color:#b45309; padding:4px 12px; border-radius:999px; font-size:12px; font-weight:700; margin-bottom:16px;">
+              <span>⭐ 5.0 (รีวิวระดับยอดเยี่ยม)</span>
+            </div>
+
+            <p style="font-size:13px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px;">
+              เชี่ยวชาญการสร้าง Web Application ประสิทธิภาพสูง, ระบบ Concurrency และ UI/UX ประณีต
             </p>
-          </div>
 
-          <div>
-            <div class="card-metrics-box">
-              <div style="color:var(--text-dim); margin-bottom:4px;">PRODUCTION BENCHMARKS:</div>
-              <div style="color:#fff; font-weight:700;">LATENCY: &lt; 200MS // 1,000+ CONCURRENT WEBSOCKETS</div>
-              <div style="color:var(--accent-cyan); margin-top:4px;">ADMIN LIVE MODERATION // 60 FPS RENDERER</div>
+            <div class="about-stats-grid">
+              <div class="stat-item">
+                <div class="stat-val" style="color:var(--emerald);">100%</div>
+                <div class="stat-lbl">ส่งมอบงานตรงเวลา</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-val" style="color:var(--fw-blue);">&lt; 15 นาที</div>
+                <div class="stat-lbl">ระยะเวลาตอบกลับ</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-val">3+ ระบบ</div>
+                <div class="stat-lbl">Live Production</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-val">15,000+</div>
+                <div class="stat-lbl">ผู้ใช้งานในระบบจริง</div>
+              </div>
             </div>
 
-            <div class="card-actions">
-              <a href="https://sangjan.com/" target="_blank" rel="noopener noreferrer" class="btn-raw primary">
-                LIVE PRODUCTION ↗
-              </a>
-              <button class="btn-raw open-project-btn" data-project-id="sangjan">
-                3D SPECS
+            <div style="margin-top:24px;">
+              <button class="btn-fw-primary trigger-brief-btn" style="width:100%;">
+                พูดคุยกับพีโดยตรง ↗
               </button>
             </div>
           </div>
-        </article>
 
-        <!-- Project 2: WUSAB.net -->
-        <article class="raw-project-card">
-          <div>
-            <div class="card-top">
-              <span class="tag-badge" style="color:#818cf8; border-color:#818cf8;">PROJ_02 // ENTERPRISE PORTAL</span>
-              <span style="font-family:var(--font-mono); font-size:12px; color:#94a3b8;">PUBLIC SCALE ●</span>
-            </div>
-            <h3 class="card-title">WUSAB.NET OFFICIAL PORTAL</h3>
-            <p class="card-tagline">
-              Official centralized portal for Walailak University Student Association. Orchestrates announcements, student activities, project calendars, and multi-service workflows.
+          <!-- Story & Technical Background -->
+          <div class="about-story">
+            <span class="about-section-tag">MEET THE ARCHITECT // แนะนำตัว</span>
+            <h2 class="about-title">
+              สร้างสรรค์เว็บไซต์ที่มีคุณภาพ<br>
+              ทั้งดีไซน์และประสิทธิภาพหลังบ้าน
+            </h2>
+
+            <p class="about-desc">
+              สวัสดีครับ ผม <strong>พี</strong> เป็น Full-Stack Developer &amp; UI/UX Specialist ที่เน้นสร้างสรรค์งานเว็บไซต์และระบบเว็บแอปพลิเคชันที่ <strong>"ใช้งานได้จริงในโลกธุรกิจ"</strong> และรองรับผู้ใช้งานพร้อมกันจำนวนมาก
             </p>
-          </div>
 
-          <div>
-            <div class="card-metrics-box">
-              <div style="color:var(--text-dim); margin-bottom:4px;">PRODUCTION BENCHMARKS:</div>
-              <div style="color:#fff; font-weight:700;">AUDIENCE: 15,000+ STUDENTS // LIGHTHOUSE 98/100</div>
-              <div style="color:#818cf8; margin-top:4px;">FREE INSTITUTIONAL CONTRIBUTION // DESIGN SYSTEM</div>
-            </div>
-
-            <div class="card-actions">
-              <a href="https://www.wusab.net/" target="_blank" rel="noopener noreferrer" class="btn-raw primary">
-                LIVE PRODUCTION ↗
-              </a>
-              <button class="btn-raw open-project-btn" data-project-id="wusab">
-                3D SPECS
-              </button>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3: OpenWorld Check-in -->
-        <article class="raw-project-card">
-          <div>
-            <div class="card-top">
-              <span class="tag-badge emerald">PROJ_03 // VERIFICATION SYSTEM</span>
-              <span style="font-family:var(--font-mono); font-size:12px; color:var(--accent-emerald);">CAMPUS READY ●</span>
-            </div>
-            <h3 class="card-title">OPENWORLD ATTENDANCE &amp; CHECK-IN</h3>
-            <p class="card-tagline">
-              High-Traffic Event Verification &amp; Activity Attendance System. Zero-latency QR verification designed to eradicate queues for thousands of students simultaneously.
+            <p class="about-desc">
+              ผมเชื่อว่าเว็บไซต์ที่ดี ไม่ใช่แค่สวยงามบนหน้าจอเพียงอย่างเดียว แต่โครงสร้างหลังบ้าน (Architecture) ต้องแข็งแรง โหลดรวดเร็วในเสี้ยววินาที ปลอดภัย และขยายตัวได้ง่าย ทุกโปรเจกต์เขียนด้วยโค้ดมาตรฐานระดับสากล ไม่ใช้เทมเพลตสำเร็จรูป เพื่อให้ตรงใจและตอบโจทย์ธุรกิจของคุณ 100%
             </p>
+
+            <div>
+              <div style="font-size:13px; font-weight:700; color:var(--text-primary); margin-bottom:10px; text-transform:uppercase;">
+                🛠️ ทักษะและเทคโนโลยีที่เชี่ยวชาญ (Tech Stack):
+              </div>
+              <div class="skill-tags-group">
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">React / Next.js</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Three.js / WebGL 3D</span>
+                <span class="skill-tag">High-Concurrency WebSockets</span>
+                <span class="skill-tag">PostgreSQL / Supabase</span>
+                <span class="skill-tag">Tailwind CSS</span>
+                <span class="skill-tag">Docker &amp; Cloudflare</span>
+                <span class="skill-tag">Figma &amp; UI/UX Systems</span>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <div class="card-metrics-box">
-              <div style="color:var(--text-dim); margin-bottom:4px;">PRODUCTION BENCHMARKS:</div>
-              <div style="color:#fff; font-weight:700;">SCAN THROUGHPUT: &lt; 1 SEC / PERSON // 99.99% UPTIME</div>
-              <div style="color:var(--accent-emerald); margin-top:4px;">REAL-TIME ANALYTICS DASHBOARD // MOBILE-FIRST</div>
-            </div>
-
-            <div class="card-actions">
-              <a href="https://openworld.wusab.net/" target="_blank" rel="noopener noreferrer" class="btn-raw primary">
-                LIVE PRODUCTION ↗
-              </a>
-              <button class="btn-raw open-project-btn" data-project-id="openworld">
-                3D SPECS
-              </button>
-            </div>
-          </div>
-        </article>
+        </div>
 
       </div>
     </section>
 
-    <!-- Engineering Matrix Section -->
-    <section class="section-wrapper" id="stack">
-      <div class="section-header">
-        <div>
-          <span class="section-num">[ 02 // TECHNICAL CAPABILITIES ]</span>
-          <h2 class="section-title">ENGINEERING MATRIX</h2>
+    <!-- =======================================================
+         SECTION 3: VERIFIED CASE STUDIES (ผลงานจริงที่เปิดใช้งานแล้ว)
+    ======================================================= -->
+    <section class="works-section" id="works">
+      <div class="section-container">
+        
+        <div class="section-head-center">
+          <span class="about-section-tag">VERIFIED CASE STUDIES</span>
+          <h2 class="section-head-title">ผลงานจริงที่เปิดให้บริการแล้ว</h2>
+          <p style="color:var(--text-secondary); font-size:15px; margin-top:10px;">
+            ระบบที่ผ่านการทดสอบและรองรับผู้ใช้งานจริงระดับโปรดักชัน
+          </p>
         </div>
-        <span class="tag-badge">ZERO AI-SLOP CODEBASE</span>
+
+        <div class="works-grid">
+
+          <!-- Project 1: Sangjan -->
+          <article class="work-card">
+            <div>
+              <div class="work-card-banner">
+                <img src="/selling/hero/weng-cover.jpg" alt="Sangjan Live Shoutout" class="work-card-img" />
+                <span class="work-card-badge">PROJ_01 // COMMERCIAL SAAS</span>
+              </div>
+              <div class="work-card-content">
+                <h3 class="work-card-title">Sangjan Live Shoutout</h3>
+                <p class="work-card-desc">
+                  แพลตฟอร์มหน้าจอสด Interactive Screen สำหรับงานคอนเสิร์ตและสถานบันเทิง ให้ผู้ร่วมงานส่งรูปภาพและข้อความขึ้นจอ LED ยักษ์ได้แบบเรียลไทม์ พร้อมระบบแอดมินคัดกรองเนื้อหา
+                </p>
+                <div class="work-metric-box">
+                  <span>⚡ ความเร็วการส่งข้อมูล:</span>
+                  <span style="color:var(--fw-blue);">&lt; 200ms (1,000+ Sockets)</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding: 0 28px 28px 28px;">
+              <div class="work-actions">
+                <a href="https://sangjan.com/" target="_blank" rel="noopener noreferrer" class="btn-fw-primary" style="flex:1;">
+                  ชมเว็บไซต์จริง ↗
+                </a>
+                <button class="btn-fw-secondary open-project-btn" data-project-id="sangjan">
+                  ดูสเปกระบบ
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: WUSAB -->
+          <article class="work-card">
+            <div>
+              <div class="work-card-banner">
+                <img src="/selling/hero/pakincht-cover.jpg" alt="WUSAB.net" class="work-card-img" />
+                <span class="work-card-badge">PROJ_02 // ENTERPRISE PORTAL</span>
+              </div>
+              <div class="work-card-content">
+                <h3 class="work-card-title">WUSAB.net Official Portal</h3>
+                <p class="work-card-desc">
+                  พอร์ทัลศูนย์กลางข้อมูลและกิจกรรมทางการของสโมสรนักศึกษา มหาวิทยาลัยวลัยลักษณ์ จัดการประกาศ กิจกรรม ปฏิทิน และระบบบริการนักศึกษาอย่างครบวงจร
+                </p>
+                <div class="work-metric-box">
+                  <span>🎓 ผู้ใช้งานในระบบ:</span>
+                  <span style="color:var(--fw-blue);">15,000+ คน (Lighthouse 98/100)</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding: 0 28px 28px 28px;">
+              <div class="work-actions">
+                <a href="https://www.wusab.net/" target="_blank" rel="noopener noreferrer" class="btn-fw-primary" style="flex:1;">
+                  ชมเว็บไซต์จริง ↗
+                </a>
+                <button class="btn-fw-secondary open-project-btn" data-project-id="wusab">
+                  ดูสเปกระบบ
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: OpenWorld -->
+          <article class="work-card">
+            <div>
+              <div class="work-card-banner">
+                <img src="/selling/hero/leobeer-cover.jpg" alt="OpenWorld Check-in" class="work-card-img" />
+                <span class="work-card-badge">PROJ_03 // VERIFICATION SYSTEM</span>
+              </div>
+              <div class="work-card-content">
+                <h3 class="work-card-title">OpenWorld Attendance &amp; Check-in</h3>
+                <p class="work-card-desc">
+                  ระบบตรวจสอบการเข้าร่วมกิจกรรมขนาดใหญ่ด้วย QR Code ไร้การหน่วงเวลา ออกแบบมาเพื่อตัดปัญหาการต่อคิวสำหรับนักศึกษาหลายพันคนในเวลาเดียวกัน
+                </p>
+                <div class="work-metric-box">
+                  <span>⚡ ความเร็วการสแกน:</span>
+                  <span style="color:var(--emerald);">&lt; 1 วินาที / คน (99.99% Uptime)</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="padding: 0 28px 28px 28px;">
+              <div class="work-actions">
+                <a href="https://openworld.wusab.net/" target="_blank" rel="noopener noreferrer" class="btn-fw-primary" style="flex:1;">
+                  ชมเว็บไซต์จริง ↗
+                </a>
+                <button class="btn-fw-secondary open-project-btn" data-project-id="openworld">
+                  ดูสเปกระบบ
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
       </div>
+    </section>
 
-      <div class="matrix-grid">
-        <div class="matrix-item">
-          <div class="matrix-title">01 // FRONTEND &amp; 3D WEBGL</div>
-          <p class="matrix-desc">
-            TypeScript, Three.js, WebGL Shader pipeline, React / Next.js, Lenis Smooth Scroll, GSAP, Tailwind CSS, Responsive Viewport Optimization.
+    <!-- =======================================================
+         SECTION 4: SERVICES & PACKAGES
+    ======================================================= -->
+    <section class="services-section" id="services">
+      <div class="section-container">
+        
+        <div class="section-head-center">
+          <span class="about-section-tag">SERVICES &amp; PACKAGES</span>
+          <h2 class="section-head-title">บริการรับทำเว็บไซต์และพัฒนาระบบ</h2>
+          <p style="color:var(--text-secondary); font-size:15px; margin-top:10px;">
+            เลือกรูปแบบที่เหมาะกับธุรกิจของคุณ หรือปรับแต่งตามงบประมาณได้
           </p>
         </div>
 
-        <div class="matrix-item">
-          <div class="matrix-title">02 // BACKEND &amp; REAL-TIME</div>
-          <p class="matrix-desc">
-            Node.js, High-Concurrency WebSockets, Fastify / Express, REST &amp; GraphQL APIs, Redis pub/sub queues, Authentication &amp; RBAC.
-          </p>
+        <div class="services-grid">
+
+          <!-- Service 1: Business Landing Page -->
+          <div class="service-card">
+            <div>
+              <h3 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">เว็บไซต์ธุรกิจ &amp; Landing Page</h3>
+              <p style="font-size:13px; color:var(--text-secondary);">เหมาะสำหรับแนะนำบริษัท บริการ สินค้า สร้างความน่าเชื่อถือระดับมืออาชีพ</p>
+              
+              <div class="service-price-wrap">
+                <span style="font-size:13px; color:var(--text-muted);">เริ่มต้น</span>
+                <div class="service-price">฿12,500.-</div>
+              </div>
+
+              <ul class="service-features">
+                <li><span class="check-icon">✓</span> ออกแบบ UI/UX คลีน พรีเมียม ตรงเอกลักษณ์แบรนด์</li>
+                <li><span class="check-icon">✓</span> รองรับ Responsive มือถือ แท็บเล็ต และคอมพิวเตอร์</li>
+                <li><span class="check-icon">✓</span> โหลดเร็วระดับเสี้ยววินาที ติด SEO หน้าแรก Google</li>
+                <li><span class="check-icon">✓</span> เชื่อมต่อแบบฟอร์มส่งข้อมูลเข้า Line หรือ Email ทันที</li>
+                <li><span class="check-icon">✓</span> ดูแลระบบฟรี 30 วันหลังส่งมอบ</li>
+              </ul>
+            </div>
+
+            <button class="btn-fw-secondary trigger-brief-btn" style="width:100%;">
+              เลือกแพ็กเกจนี้ ↗
+            </button>
+          </div>
+
+          <!-- Service 2: Custom Web Application / SaaS (POPULAR) -->
+          <div class="service-card popular">
+            <div class="popular-badge">ยอดนิยม ★ แนะนำสำหรับธุรกิจ</div>
+            <div>
+              <h3 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">เว็บแอปพลิเคชัน &amp; SaaS เฉพาะทาง</h3>
+              <p style="font-size:13px; color:var(--text-secondary);">ระบบเว็บพร้อมฐานข้อมูล ระบบสมาชิก แดชบอร์ดแอดมิน และฟังก์ชันเฉพาะ</p>
+              
+              <div class="service-price-wrap">
+                <span style="font-size:13px; color:var(--text-muted);">เริ่มต้น</span>
+                <div class="service-price" style="color:var(--fw-blue);">฿35,000.-</div>
+              </div>
+
+              <ul class="service-features">
+                <li><span class="check-icon">✓</span> สถาปัตยกรรม Full-Stack (Next.js / Node / PostgreSQL)</li>
+                <li><span class="check-icon">✓</span> ระบบ Login, Role-Based Authentication ความปลอดภัยสูง</li>
+                <li><span class="check-icon">✓</span> แดชบอร์ดสรุปข้อมูล &amp; รายงานสถิติแบบ Real-time</li>
+                <li><span class="check-icon">✓</span> รองรับผู้ใช้งานพร้อมกันจำนวนมากแบบไม่มีสะดุด</li>
+                <li><span class="check-icon">✓</span> ซอร์สโค้ดสะอาด มีเอกสารกำกับ ดูแลฟรี 60 วัน</li>
+              </ul>
+            </div>
+
+            <button class="btn-fw-primary trigger-brief-btn" style="width:100%;">
+              ส่งบรีฟระบบนี้ ↗
+            </button>
+          </div>
+
+          <!-- Service 3: Interactive 3D & Concurrency -->
+          <div class="service-card">
+            <div>
+              <h3 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">Interactive 3D &amp; Real-time Systems</h3>
+              <p style="font-size:13px; color:var(--text-secondary);">สำหรับงานแบรนด์ที่ต้องการความว้าว หรือระบบสดระดับ Event / Concert</p>
+              
+              <div class="service-price-wrap">
+                <span style="font-size:13px; color:var(--text-muted);">เริ่มต้น</span>
+                <div class="service-price">฿25,000.-</div>
+              </div>
+
+              <ul class="service-features">
+                <li><span class="check-icon">✓</span> Three.js WebGL กราฟิก 3 มิติ ตอบสนองการเลื่อนและเมาส์</li>
+                <li><span class="check-icon">✓</span> การเชื่อมต่อ WebSockets แบบ Real-time ตอบสนองทันที</li>
+                <li><span class="check-icon">✓</span> แอนิเมชันลื่นไหล 60 FPS ปรับแต่งประสิทธิภาพสูงสุด</li>
+                <li><span class="check-icon">✓</span> ระบบสแกน QR Code / ตรวจสอบข้อมูลรวดเร็ว</li>
+                <li><span class="check-icon">✓</span> ซัพพอร์ตการขึ้นระบบจริง Cloudflare / Cloud Server</li>
+              </ul>
+            </div>
+
+            <button class="btn-fw-secondary trigger-brief-btn" style="width:100%;">
+              เลือกแพ็กเกจนี้ ↗
+            </button>
+          </div>
+
         </div>
 
-        <div class="matrix-item">
-          <div class="matrix-title">03 // DATABASE &amp; CLOUD INFRA</div>
-          <p class="matrix-desc">
-            PostgreSQL, Supabase, Cloudflare Workers &amp; Edge CDN, Docker containers, automated CI/CD pipelines, Git Time Machine architecture.
-          </p>
-        </div>
-
-        <div class="matrix-item">
-          <div class="matrix-title">04 // BESPOKE UI/UX DESIGN</div>
-          <p class="matrix-desc">
-            Figma Design Systems, Micro-interactions, Editorial Typography, Conversion-driven layout, Zero generic templates, Craftsmanship.
-          </p>
-        </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="section-wrapper" style="border-top: 1px solid var(--border-color); padding-top: 60px; padding-bottom: 60px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
-        <div>
-          <div style="font-family:var(--font-mono); font-size:14px; font-weight:700; margin-bottom:6px;">
-            P // SENIOR FULL-STACK &amp; CREATIVE ARCHITECT
+    <footer class="site-footer">
+      <div class="section-container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+        <div style="text-align:left;">
+          <div style="font-size:15px; font-weight:800; color:var(--text-primary); margin-bottom:4px;">
+            P // Senior Full-Stack &amp; Web Architect
           </div>
-          <div style="font-family:var(--font-mono); font-size:12px; color:var(--text-dim);">
-            BANGKOK, THAILAND • GITHUB: @TheMangKung • CRAFTED WITH THREE.JS &amp; VITE
+          <div style="font-size:13px; color:var(--text-secondary);">
+            กรุงเทพฯ &amp; นครศรีธรรมราช • GitHub: @TheMangKung • พร้อมรับงานทุกประเภท
           </div>
         </div>
 
-        <button class="btn-raw primary trigger-brief-btn interactive">
-          START A COMMISSION ↗
+        <button class="btn-fw-primary trigger-brief-btn">
+          เริ่มต้นปรึกษาโปรเจกต์ ↗
         </button>
       </div>
     </footer>
 
   </div>
 
-  <!-- Project Detail Modal (3D Click Inspection) -->
-  <div class="raw-modal-overlay" id="project-detail-modal">
-    <div class="raw-modal-box">
-      <button class="modal-close-btn" id="project-modal-close">✕</button>
+  <!-- =======================================================
+       MODAL 1: PROJECT DETAIL INSPECTION
+  ======================================================= -->
+  <div class="fw-modal-overlay" id="project-detail-modal">
+    <div class="fw-modal-card">
+      <button class="fw-modal-close" id="project-modal-close">✕</button>
 
       <div style="margin-bottom:12px;">
-        <span class="mono" id="detail-code" style="font-size:12px; font-weight:700;">[ PROJ_01 // SYSTEM SPECS ]</span>
+        <span id="detail-code" style="font-size:12px; font-weight:700; color:var(--fw-blue);">[ PROJ_01 // SYSTEM SPECS ]</span>
       </div>
 
-      <h3 id="detail-title" style="font-size:28px; font-weight:900; letter-spacing:-0.03em; margin-bottom:10px; color:#fff;">
+      <h3 id="detail-title" style="font-size:24px; font-weight:800; color:var(--text-primary); margin-bottom:8px;">
         PROJECT TITLE
       </h3>
 
-      <p id="detail-tagline" style="font-size:14px; color:var(--text-muted); line-height:1.6; margin-bottom:24px;">
+      <p id="detail-tagline" style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:20px;">
         Project description
       </p>
 
-      <div style="background:rgba(0,0,0,0.5); border:1px solid var(--border-color); padding:18px; border-radius:6px; margin-bottom:28px;">
-        <div style="font-family:var(--font-mono); font-size:11px; color:var(--text-dim); margin-bottom:6px;">PRODUCTION TELEMETRY:</div>
-        <div id="detail-metric" style="font-family:var(--font-mono); font-size:14px; font-weight:700; color:#fff; margin-bottom:8px;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; margin-bottom:24px;">
+        <div style="font-size:11px; font-weight:700; color:var(--text-muted); margin-bottom:4px;">PRODUCTION BENCHMARKS:</div>
+        <div id="detail-metric" style="font-size:14px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">
           METRIC
         </div>
-        <div id="detail-status" style="font-family:var(--font-mono); font-size:12px;">
+        <div id="detail-status" style="font-size:12px; font-weight:700;">
           STATUS
         </div>
       </div>
 
-      <div style="display:flex; gap:12px;">
-        <a id="detail-live-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-raw primary" style="flex:1; justify-content:center;">
-          OPEN PRODUCTION DEPLOYMENT ↗
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a id="detail-live-btn" href="#" target="_blank" rel="noopener noreferrer" class="btn-fw-primary" style="flex:1;">
+          เปิดดูเว็บไซต์จริง ↗
         </a>
-        <button class="btn-raw trigger-brief-btn" style="flex:1; justify-content:center;">
-          COMMISSION SIMILAR SYSTEM
+        <button class="btn-fw-secondary trigger-brief-btn" style="flex:1;">
+          สั่งทำระบบลักษณะนี้
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Direct Briefing Modal -->
-  <div class="raw-modal-overlay" id="brief-modal">
-    <div class="raw-modal-box">
-      <button class="modal-close-btn" id="brief-modal-close">✕</button>
+  <!-- =======================================================
+       MODAL 2: DIRECT BRIEF MODAL (Fastwork Style)
+  ======================================================= -->
+  <div class="fw-modal-overlay" id="brief-modal">
+    <div class="fw-modal-card">
+      <button class="fw-modal-close" id="brief-modal-close">✕</button>
 
-      <div style="margin-bottom:12px;">
-        <span class="tag-badge cyan">DIRECT COMMISSION BRIEFING</span>
+      <div style="margin-bottom:8px;">
+        <span style="display:inline-block; font-size:12px; font-weight:700; color:var(--fw-blue); background:var(--fw-blue-light); padding:4px 10px; border-radius:999px;">
+          ✓ ส่งบรีฟงานโดยตรงถึง พี
+        </span>
       </div>
 
-      <h3 style="font-size:26px; font-weight:900; letter-spacing:-0.03em; margin-bottom:6px; color:#fff;">
-        COMMISSION ARCHITECTURE TO P
+      <h3 style="font-size:24px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">
+        ปรึกษาหรือส่งบรีฟงานทำเว็บไซต์
       </h3>
 
-      <p style="font-size:13px; color:var(--text-muted); margin-bottom:24px; line-height:1.6;">
-        Submit your project specifications directly. Response guaranteed within 15 minutes. High-performance, scalable code with zero compromise.
+      <p style="font-size:13px; color:var(--text-secondary); margin-bottom:20px; line-height:1.6;">
+        กรอกข้อมูลความต้องการของคุณเพื่อประเมินราคาและระยะเวลา ตอบกลับรวดเร็วภายใน 15 นาที
       </p>
 
       <!-- Success Screen -->
-      <div id="brief-success-view" style="display:none; text-align:center; padding:20px 0;">
-        <div style="width:56px; height:56px; border-radius:50%; background:rgba(16,185,129,0.15); border:1px solid var(--accent-emerald); color:var(--accent-emerald); font-size:24px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px auto;">✓</div>
-        <h4 style="font-size:22px; font-weight:900; color:#fff; margin-bottom:8px;">SPECIFICATION TRANSMITTED! 🎉</h4>
-        <p style="font-size:13px; color:var(--text-muted); line-height:1.6; margin-bottom:20px;">
-          P has received your brief telemetry and will contact you via your specified handle shortly.
+      <div id="brief-success-view" style="display:none; text-align:center; padding:16px 0;">
+        <div style="width:60px; height:60px; border-radius:50%; background:#dcfce7; color:#16a34a; font-size:28px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px auto;">
+          ✓
+        </div>
+        <h4 style="font-size:22px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">
+          ส่งบรีฟงานเรียบร้อยแล้ว! 🎉
+        </h4>
+        <p style="font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:20px;">
+          พีได้รับข้อมูลของคุณแล้ว และจะติดต่อกลับตามช่องทางที่คุณระบุโดยเร็วที่สุด
         </p>
 
-        <div id="brief-summary-box" style="background:rgba(0,0,0,0.5); border:1px solid var(--border-color); border-radius:6px; padding:16px; text-align:left; font-family:var(--font-mono); font-size:12px; line-height:1.7; margin-bottom:20px;">
+        <div id="brief-summary-box" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:16px; text-align:left; font-size:13px; line-height:1.7; margin-bottom:20px;">
         </div>
 
-        <button id="brief-copy-btn" class="btn-raw primary" style="width:100%; justify-content:center;">
-          COPY SPECIFICATION
+        <button id="brief-copy-btn" class="btn-fw-primary" style="width:100%;">
+          คัดลอกรายละเอียดบรีฟ
         </button>
       </div>
 
       <!-- Form View -->
       <form id="brief-form">
         <div>
-          <label class="raw-label">CLIENT / ORGANIZATION NAME *</label>
-          <input type="text" id="brief-name" required placeholder="e.g. Alex (Apex Dynamics Co.)" class="raw-input">
+          <label class="fw-label">ชื่อผู้ติดต่อ / บริษัท *</label>
+          <input type="text" id="brief-name" required placeholder="เช่น คุณสมชาย หรือ บริษัท เอบีซี จำกัด" class="fw-input" />
         </div>
 
         <div>
-          <label class="raw-label">CONTACT HANDLE (LINE ID / TELEGRAM / EMAIL / PHONE) *</label>
-          <input type="text" id="brief-contact" required placeholder="e.g. Line: @alex_dev or alex@company.com" class="raw-input">
+          <label class="fw-label">ช่องทางติดต่อกลับ (Line ID / เบอร์โทร / Email) *</label>
+          <input type="text" id="brief-contact" required placeholder="เช่น Line: somchai_dev หรือ 081-xxx-xxxx" class="fw-input" />
         </div>
 
         <div>
-          <label class="raw-label">SYSTEM SCOPE &amp; SERVICE TIER</label>
-          <select id="brief-service" class="raw-input" style="background:#000;">
-            <option value="Custom High-Concurrency Web App &amp; SaaS">Custom High-Concurrency Web App &amp; SaaS (฿36,000+)</option>
-            <option value="Interactive 3D WebGL Landing Page">Interactive 3D WebGL Landing Page (฿18,500+)</option>
-            <option value="Corporate Web &amp; Design System">Corporate Web &amp; Design System (฿12,500+)</option>
-            <option value="Custom Architecture &amp; Consulting">Custom Architecture &amp; Consulting</option>
+          <label class="fw-label">ประเภทเว็บไซต์หรือระบบที่ต้องการ</label>
+          <select id="brief-service" class="fw-input">
+            <option value="เว็บแอปพลิเคชัน & SaaS เฉพาะทาง">เว็บแอปพลิเคชัน &amp; SaaS เฉพาะทาง (฿35,000+)</option>
+            <option value="เว็บไซต์ธุรกิจ & Landing Page พรีเมียม">เว็บไซต์ธุรกิจ &amp; Landing Page พรีเมียม (฿12,500+)</option>
+            <option value="Interactive 3D & ระบบ Real-time">Interactive 3D &amp; ระบบ Real-time (฿25,000+)</option>
+            <option value="พัฒนาระบบ Custom ปรับแต่งพิเศษ">พัฒนาระบบ Custom ปรับแต่งพิเศษ</option>
           </select>
         </div>
 
         <div>
-          <label class="raw-label">SPECIFICATIONS &amp; REQUIREMENTS *</label>
-          <textarea id="brief-details" required rows="3" placeholder="Describe features, reference sites, target scale, timeline..." class="raw-input" style="resize:vertical;"></textarea>
+          <label class="fw-label">รายละเอียดความต้องการเบื้องต้น *</label>
+          <textarea id="brief-details" required rows="3" placeholder="อธิบายฟังก์ชันที่ต้องการ เว็บไซต์ตัวอย่างที่ชอบ หรือระยะเวลาที่ต้องการใช้งาน..." class="fw-input" style="resize:vertical;"></textarea>
         </div>
 
-        <button type="submit" class="btn-raw primary" style="width:100%; justify-content:center; padding:14px;">
-          TRANSMIT SPECIFICATION 🚀
+        <button type="submit" class="btn-fw-primary" style="width:100%; height:48px; font-size:15px; margin-top:8px;">
+          ส่งบรีฟให้พีทันที 🚀
         </button>
       </form>
-
     </div>
   </div>
 

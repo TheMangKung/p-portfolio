@@ -41,8 +41,8 @@ export class Environment {
     this.cyanAccentLight.position.set(4, -2, 2);
     this.experience.scene.add(this.cyanAccentLight);
 
-    // Subtle distance fog
-    this.experience.scene.fog = new THREE.FogExp2(0x08090b, 0.05);
+    // Subtle distance fog (pure white or subtle)
+    this.experience.scene.fog = new THREE.FogExp2(0xffffff, 0.015);
   }
 
   public update(): void {

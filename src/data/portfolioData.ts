@@ -284,11 +284,6 @@ export const PROJECTS: Project[] = [
       ]
     }
   },
-        "ยอดจองตรง (Direct Bookings) แซงหน้า OTA ภายใน 3 เดือน",
-        "คะแนน SEO ติดอันดับ 1 ของคำค้นหาหลักใน Google"
-      ]
-    }
-  },
   {
     id: "proj-4",
     title: "CraftCafe - E-Commerce & Omnichannel Order System",
