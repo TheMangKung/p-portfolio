@@ -78,21 +78,81 @@ function handleScrollMotion() {
     heroCenter.style.opacity = `${Math.max(0, 1 - p * 1.15)}`;
   }
 
-  // 3. Gradual Expansion of Fastwork Profile Window ("เวลาเลื่อนมันจะค่อยๆขยาย")
+  // 3. Gradual Expansion & Subsequent Fade-Out on Scroll ("พอเลื่อนขึ้นไออันนี้ก็จะขึ้นตามค่อยๆ จางหายไป")
   if (profileWindow) {
-    const scale = 0.84 + 0.16 * p;
-    const translateY = (1 - p) * 60;
-    const opacity = 0.65 + 0.35 * p;
-    const radius = 38 - 10 * p;
-    profileWindow.style.transform = `scale(${scale}) translate3d(0, ${translateY}px, 0)`;
-    profileWindow.style.opacity = `${opacity}`;
-    profileWindow.style.borderRadius = `${radius}px`;
+    if (scrollY <= 450) {
+      // Phase 1: Expanding into full view
+      const scale = 0.84 + 0.16 * p;
+      const translateY = (1 - p) * 60;
+      const opacity = 0.65 + 0.35 * p;
+      const radius = 38 - 10 * p;
+      profileWindow.style.transform = `scale(${scale}) translate3d(0, ${translateY}px, 0)`;
+      profileWindow.style.opacity = `${opacity}`;
+      profileWindow.style.borderRadius = `${radius}px`;
+    } else {
+      // Phase 2: Glides up and smoothly fades away as user scrolls into works
+      const fadeP = Math.min(Math.max((scrollY - 450) / 420, 0), 1);
+      const scale = 1 - fadeP * 0.05;
+      const translateY = -fadeP * 80;
+      const opacity = Math.max(0, 1 - fadeP * 1.25);
+      profileWindow.style.transform = `scale(${scale}) translate3d(0, ${translateY}px, 0)`;
+      profileWindow.style.opacity = `${opacity}`;
+      profileWindow.style.borderRadius = '28px';
+    }
   }
+
+  // 4. Staggered Cinematic Reveal for Case Studies (#works)
+  const worksHead = document.querySelector('.section-head-center') as HTMLElement | null;
+  const workCards = document.querySelectorAll('.work-card');
+
+  if (worksHead) {
+    const headP = Math.min(Math.max((scrollY - 360) / 360, 0), 1);
+    worksHead.style.opacity = `${headP}`;
+    worksHead.style.transform = `translate3d(0, ${(1 - headP) * 45}px, 0)`;
+  }
+
+  workCards.forEach((card, index) => {
+    const htmlCard = card as HTMLElement;
+    if (htmlCard.dataset.isHovered === 'true') return; // Don't override user hover tilt
+
+    const cardP = Math.min(Math.max((scrollY - (400 + index * 90)) / 360, 0), 1);
+    htmlCard.style.opacity = `${cardP}`;
+    htmlCard.style.transform = `translate3d(0, ${(1 - cardP) * 65}px, 0) scale(${0.94 + 0.06 * cardP})`;
+  });
 }
 
 window.addEventListener('scroll', handleScrollMotion, { passive: true });
 lenis.on('scroll', handleScrollMotion);
 handleScrollMotion(); // Initial tick
+
+// =======================================================
+// Interactive 3D Magnetic Tilt & Cursor Glare on Work Cards
+// =======================================================
+document.querySelectorAll('.work-card').forEach((card) => {
+  const htmlCard = card as HTMLElement;
+
+  htmlCard.addEventListener('mousemove', (e) => {
+    htmlCard.dataset.isHovered = 'true';
+    const rect = htmlCard.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Smooth tilt (max 7 degrees)
+    const rotateX = ((y - centerY) / centerY) * -7;
+    const rotateY = ((x - centerX) / centerX) * 7;
+
+    htmlCard.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+    htmlCard.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+    htmlCard.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-8px) scale3d(1.025, 1.025, 1.025)`;
+  });
+
+  htmlCard.addEventListener('mouseleave', () => {
+    htmlCard.dataset.isHovered = 'false';
+    htmlCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)';
+  });
+});
 
 // =======================================================
 // Tabs Navigation Logic (Fastwork Profile)
@@ -113,13 +173,6 @@ tabButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const tabId = btn.getAttribute('data-tab');
     if (tabId) switchTab(tabId);
-  });
-});
-
-document.querySelectorAll('.trigger-tab-services').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    switchTab('services');
   });
 });
 

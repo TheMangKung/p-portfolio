@@ -28,7 +28,6 @@
         <a href="#hero" class="nav-link">หน้าแรก</a>
         <a href="#about" class="nav-link">แนะนำตัว &amp; ประวัติ</a>
         <a href="#works" class="nav-link">ผลงานจริง</a>
-        <a href="#services" class="nav-link">บริการ &amp; แพ็กเกจ</a>
       </nav>
 
       <div class="nav-actions">
@@ -262,184 +261,51 @@
 
         </div>
 
-        <!-- Tabs Navigation Bar -->
+        <!-- Tabs Navigation Bar (Services removed) -->
         <div class="fw-profile-tabs">
-          <button class="fw-tab-btn active" data-tab="portfolio">Portfolio</button>
-          <button class="fw-tab-btn" data-tab="services">Services</button>
-          <button class="fw-tab-btn" data-tab="reviews">Reviews</button>
-          <button class="fw-tab-btn" data-tab="about">About</button>
+          <button class="fw-tab-btn active" data-tab="portfolio">Portfolio (ผลงาน)</button>
+          <button class="fw-tab-btn" data-tab="reviews">Reviews (รีวิว)</button>
+          <button class="fw-tab-btn" data-tab="about">About (ประวัติ)</button>
         </div>
 
-        <!-- TAB PANEL 1: PORTFOLIO (Matching Image 1) -->
+        <!-- TAB PANEL 1: PORTFOLIO (Full Width Showcase) -->
         <div class="fw-tab-panel active" id="tab-panel-portfolio">
-          <div class="fw-tab-content-grid">
+          <div class="fw-portfolio-fullgrid">
             
-            <!-- Left: Portfolio Showcase Grid -->
-            <div class="fw-portfolio-grid">
-              
-              <!-- Card 1: Sangjan Live Screen (Tall Poster) -->
-              <div class="fw-portfolio-poster open-project-btn" data-project-id="sangjan">
-                <img src="/selling/hero/weng-cover.jpg" alt="Sangjan Live Shoutout" class="fw-poster-img" />
-                <div class="fw-poster-overlay">
-                  <span class="fw-poster-tag">COMMERCIAL SAAS</span>
-                  <h4 class="fw-poster-title">Sangjan Live Screen</h4>
-                  <div class="fw-poster-metric">⚡ Latency &lt; 200ms • 1,000+ Sockets</div>
-                </div>
+            <!-- Card 1: Sangjan Live Screen (Tall Poster) -->
+            <div class="fw-portfolio-poster open-project-btn" data-project-id="sangjan">
+              <img src="/selling/hero/weng-cover.jpg" alt="Sangjan Live Shoutout" class="fw-poster-img" />
+              <div class="fw-poster-overlay">
+                <span class="fw-poster-tag">COMMERCIAL SAAS</span>
+                <h4 class="fw-poster-title">Sangjan Live Screen</h4>
+                <div class="fw-poster-metric">⚡ Latency &lt; 200ms • 1,000+ Sockets</div>
               </div>
-
-              <!-- Card 2: WUSAB.net (Tall Poster) -->
-              <div class="fw-portfolio-poster open-project-btn" data-project-id="wusab">
-                <img src="/selling/hero/pakincht-cover.jpg" alt="WUSAB.net Official Portal" class="fw-poster-img" />
-                <div class="fw-poster-overlay">
-                  <span class="fw-poster-tag">ENTERPRISE PORTAL</span>
-                  <h4 class="fw-poster-title">WUSAB.net Portal</h4>
-                  <div class="fw-poster-metric">🎓 15,000+ Users • Lighthouse 98/100</div>
-                </div>
-              </div>
-
-              <!-- Substack for Card 3 & Vinyl Widget -->
-              <div class="fw-portfolio-substack">
-                <!-- Card 3: OpenWorld Scanner -->
-                <div class="fw-portfolio-subcard open-project-btn" data-project-id="openworld">
-                  <img src="/selling/hero/leobeer-cover.jpg" alt="OpenWorld Scanner" class="fw-subcard-img" />
-                  <div class="fw-subcard-overlay">
-                    <span class="fw-poster-tag">QR CHECK-IN</span>
-                    <div class="fw-subcard-title">OpenWorld Attendance</div>
-                    <div class="fw-poster-metric">⚡ &lt; 1s / Person</div>
-                  </div>
-                </div>
-
-                <!-- Card 4: Vinyl Disc Interactive Element -->
-                <div class="fw-vinyl-card trigger-brief-btn">
-                  <div class="fw-vinyl-disc">
-                    <div class="fw-vinyl-center">P</div>
-                  </div>
-                  <div class="fw-vinyl-speaker">🔊</div>
-                </div>
-              </div>
-
             </div>
 
-            <!-- Right: Services List (Matching Image 1) -->
-            <div class="fw-services-sidebar">
-              <div class="fw-services-sidebar-head">
-                <span class="fw-sidebar-title">Services</span>
-                <a href="#services" class="fw-sidebar-viewall trigger-tab-services">View all</a>
+            <!-- Card 2: WUSAB.net (Tall Poster) -->
+            <div class="fw-portfolio-poster open-project-btn" data-project-id="wusab">
+              <img src="/selling/hero/pakincht-cover.jpg" alt="WUSAB.net Official Portal" class="fw-poster-img" />
+              <div class="fw-poster-overlay">
+                <span class="fw-poster-tag">ENTERPRISE PORTAL</span>
+                <h4 class="fw-poster-title">WUSAB.net Official Portal</h4>
+                <div class="fw-poster-metric">🎓 15,000+ Users • Lighthouse 98/100</div>
               </div>
+            </div>
 
-              <!-- Service Item 1 -->
-              <div class="fw-service-row trigger-brief-btn" data-service-name="เว็บแอปพลิเคชัน & SaaS เฉพาะทาง">
-                <img src="/selling/sellers/sound-composer/service-scoring.jpg" alt="Service 1" class="fw-service-thumb" />
-                <div class="fw-service-info">
-                  <div class="fw-service-name">เว็บแอปพลิเคชัน &amp; SaaS เฉพาะทาง</div>
-                  <div class="fw-service-meta">
-                    <span class="fw-service-price">฿35,000</span>
-                    <span>·</span>
-                    <span>Sold 14</span>
-                    <span>·</span>
-                    <span class="fw-star-rating">★ 5.0 (18)</span>
-                  </div>
-                </div>
+            <!-- Card 3: OpenWorld Scanner (Tall Poster) -->
+            <div class="fw-portfolio-poster open-project-btn" data-project-id="openworld">
+              <img src="/selling/hero/leobeer-cover.jpg" alt="OpenWorld Scanner" class="fw-poster-img" />
+              <div class="fw-poster-overlay">
+                <span class="fw-poster-tag">QR CHECK-IN</span>
+                <h4 class="fw-poster-title">OpenWorld Attendance</h4>
+                <div class="fw-poster-metric">⚡ &lt; 1s / Person • 99.99% Uptime</div>
               </div>
-
-              <!-- Service Item 2 -->
-              <div class="fw-service-row trigger-brief-btn" data-service-name="เว็บไซต์ธุรกิจ & Landing Page พรีเมียม">
-                <img src="/selling/sellers/sound-composer/service-feature.jpg" alt="Service 2" class="fw-service-thumb" />
-                <div class="fw-service-info">
-                  <div class="fw-service-name">เว็บไซต์ธุรกิจ &amp; Landing Page พรีเมียม</div>
-                  <div class="fw-service-meta">
-                    <span class="fw-service-price">฿12,500</span>
-                    <span>·</span>
-                    <span>Sold 28</span>
-                    <span>·</span>
-                    <span class="fw-star-rating">★ 5.0 (26)</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Service Item 3 -->
-              <div class="fw-service-row trigger-brief-btn" data-service-name="Interactive 3D & Real-time Systems">
-                <img src="/selling/sellers/sound-composer/service-ost.jpg" alt="Service 3" class="fw-service-thumb" />
-                <div class="fw-service-info">
-                  <div class="fw-service-name">Interactive 3D &amp; Real-time Systems</div>
-                  <div class="fw-service-meta">
-                    <span class="fw-service-price">฿25,000</span>
-                    <span>·</span>
-                    <span>Sold 9</span>
-                    <span>·</span>
-                    <span class="fw-star-rating">★ 4.9 (11)</span>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
           </div>
         </div>
 
-        <!-- TAB PANEL 2: SERVICES -->
-        <div class="fw-tab-panel" id="tab-panel-services">
-          <div style="padding: 20px 0;">
-            <div class="services-grid">
-              <div class="service-card">
-                <div>
-                  <h3 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">เว็บไซต์ธุรกิจ &amp; Landing Page</h3>
-                  <p style="font-size:13px; color:var(--text-secondary);">เหมาะสำหรับแนะนำบริษัท บริการ สินค้า สร้างความน่าเชื่อถือระดับมืออาชีพ</p>
-                  <div class="service-price-wrap">
-                    <span style="font-size:13px; color:var(--text-muted);">เริ่มต้น</span>
-                    <div class="service-price">฿12,500.-</div>
-                  </div>
-                  <ul class="service-features">
-                    <li><span class="check-icon">✓</span> ออกแบบ UI/UX คลีน พรีเมียม ตรงเอกลักษณ์แบรนด์</li>
-                    <li><span class="check-icon">✓</span> รองรับ Responsive มือถือ แท็บเล็ต และคอมพิวเตอร์</li>
-                    <li><span class="check-icon">✓</span> โหลดเร็วระดับเสี้ยววินาที ติด SEO หน้าแรก Google</li>
-                    <li><span class="check-icon">✓</span> ดูแลระบบฟรี 30 วันหลังส่งมอบ</li>
-                  </ul>
-                </div>
-                <button class="btn-fw-secondary trigger-brief-btn" style="width:100%;">เลือกแพ็กเกจนี้ ↗</button>
-              </div>
-
-              <div class="service-card popular">
-                <div class="popular-badge">ยอดนิยม ★ แนะนำสำหรับธุรกิจ</div>
-                <div>
-                  <h3 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">เว็บแอปพลิเคชัน &amp; SaaS เฉพาะทาง</h3>
-                  <p style="font-size:13px; color:var(--text-secondary);">ระบบเว็บพร้อมฐานข้อมูล ระบบสมาชิก แดชบอร์ดแอดมิน และฟังก์ชันเฉพาะ</p>
-                  <div class="service-price-wrap">
-                    <span style="font-size:13px; color:var(--text-muted);">เริ่มต้น</span>
-                    <div class="service-price" style="color:var(--fw-blue);">฿35,000.-</div>
-                  </div>
-                  <ul class="service-features">
-                    <li><span class="check-icon">✓</span> สถาปัตยกรรม Full-Stack (Next.js / Node / PostgreSQL)</li>
-                    <li><span class="check-icon">✓</span> ระบบ Login, Role-Based Authentication ความปลอดภัยสูง</li>
-                    <li><span class="check-icon">✓</span> แดชบอร์ดสรุปข้อมูล &amp; รายงานสถิติแบบ Real-time</li>
-                    <li><span class="check-icon">✓</span> ซอร์สโค้ดสะอาด มีเอกสารกำกับ ดูแลฟรี 60 วัน</li>
-                  </ul>
-                </div>
-                <button class="btn-fw-primary trigger-brief-btn" style="width:100%;">ส่งบรีฟระบบนี้ ↗</button>
-              </div>
-
-              <div class="service-card">
-                <div>
-                  <h3 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">Interactive 3D &amp; Real-time Systems</h3>
-                  <p style="font-size:13px; color:var(--text-secondary);">สำหรับงานแบรนด์ที่ต้องการความว้าว หรือระบบสดระดับ Event / Concert</p>
-                  <div class="service-price-wrap">
-                    <span style="font-size:13px; color:var(--text-muted);">เริ่มต้น</span>
-                    <div class="service-price">฿25,000.-</div>
-                  </div>
-                  <ul class="service-features">
-                    <li><span class="check-icon">✓</span> Three.js WebGL กราฟิก 3 มิติ ตอบสนองการเลื่อนและเมาส์</li>
-                    <li><span class="check-icon">✓</span> การเชื่อมต่อ WebSockets แบบ Real-time ตอบสนองทันที</li>
-                    <li><span class="check-icon">✓</span> แอนิเมชันลื่นไหล 60 FPS ปรับแต่งประสิทธิภาพสูงสุด</li>
-                    <li><span class="check-icon">✓</span> ซัพพอร์ตการขึ้นระบบจริง Cloudflare / Cloud Server</li>
-                  </ul>
-                </div>
-                <button class="btn-fw-secondary trigger-brief-btn" style="width:100%;">เลือกแพ็กเกจนี้ ↗</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TAB PANEL 3: REVIEWS -->
+        <!-- TAB PANEL 2: REVIEWS -->
         <div class="fw-tab-panel" id="tab-panel-reviews">
           <div style="padding: 24px 0; display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:18px; padding:24px;">
@@ -610,102 +476,7 @@
       </div>
     </section>
 
-    <!-- =======================================================
-         SECTION 4: SERVICES & PACKAGES
-    ======================================================= -->
-    <section class="services-section" id="services">
-      <div class="section-container">
-        
-        <div class="section-head-center">
-          <span class="about-section-tag">SERVICES &amp; PACKAGES</span>
-          <h2 class="section-head-title">บริการรับทำเว็บไซต์และพัฒนาระบบ</h2>
-          <p style="color:var(--text-secondary); font-size:15px; margin-top:10px;">
-            เลือกรูปแบบที่เหมาะกับธุรกิจของคุณ หรือปรับแต่งตามงบประมาณได้
-          </p>
-        </div>
 
-        <div class="services-grid">
-
-          <!-- Service 1: Business Landing Page -->
-          <div class="service-card">
-            <div>
-              <h3 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">เว็บไซต์ธุรกิจ &amp; Landing Page</h3>
-              <p style="font-size:13px; color:var(--text-secondary);">เหมาะสำหรับแนะนำบริษัท บริการ สินค้า สร้างความน่าเชื่อถือระดับมืออาชีพ</p>
-              
-              <div class="service-price-wrap">
-                <span style="font-size:13px; color:var(--text-muted);">เริ่มต้น</span>
-                <div class="service-price">฿12,500.-</div>
-              </div>
-
-              <ul class="service-features">
-                <li><span class="check-icon">✓</span> ออกแบบ UI/UX คลีน พรีเมียม ตรงเอกลักษณ์แบรนด์</li>
-                <li><span class="check-icon">✓</span> รองรับ Responsive มือถือ แท็บเล็ต และคอมพิวเตอร์</li>
-                <li><span class="check-icon">✓</span> โหลดเร็วระดับเสี้ยววินาที ติด SEO หน้าแรก Google</li>
-                <li><span class="check-icon">✓</span> เชื่อมต่อแบบฟอร์มส่งข้อมูลเข้า Line หรือ Email ทันที</li>
-                <li><span class="check-icon">✓</span> ดูแลระบบฟรี 30 วันหลังส่งมอบ</li>
-              </ul>
-            </div>
-
-            <button class="btn-fw-secondary trigger-brief-btn" style="width:100%;">
-              เลือกแพ็กเกจนี้ ↗
-            </button>
-          </div>
-
-          <!-- Service 2: Custom Web Application / SaaS (POPULAR) -->
-          <div class="service-card popular">
-            <div class="popular-badge">ยอดนิยม ★ แนะนำสำหรับธุรกิจ</div>
-            <div>
-              <h3 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">เว็บแอปพลิเคชัน &amp; SaaS เฉพาะทาง</h3>
-              <p style="font-size:13px; color:var(--text-secondary);">ระบบเว็บพร้อมฐานข้อมูล ระบบสมาชิก แดชบอร์ดแอดมิน และฟังก์ชันเฉพาะ</p>
-              
-              <div class="service-price-wrap">
-                <span style="font-size:13px; color:var(--text-muted);">เริ่มต้น</span>
-                <div class="service-price" style="color:var(--fw-blue);">฿35,000.-</div>
-              </div>
-
-              <ul class="service-features">
-                <li><span class="check-icon">✓</span> สถาปัตยกรรม Full-Stack (Next.js / Node / PostgreSQL)</li>
-                <li><span class="check-icon">✓</span> ระบบ Login, Role-Based Authentication ความปลอดภัยสูง</li>
-                <li><span class="check-icon">✓</span> แดชบอร์ดสรุปข้อมูล &amp; รายงานสถิติแบบ Real-time</li>
-                <li><span class="check-icon">✓</span> รองรับผู้ใช้งานพร้อมกันจำนวนมากแบบไม่มีสะดุด</li>
-                <li><span class="check-icon">✓</span> ซอร์สโค้ดสะอาด มีเอกสารกำกับ ดูแลฟรี 60 วัน</li>
-              </ul>
-            </div>
-
-            <button class="btn-fw-primary trigger-brief-btn" style="width:100%;">
-              ส่งบรีฟระบบนี้ ↗
-            </button>
-          </div>
-
-          <!-- Service 3: Interactive 3D & Concurrency -->
-          <div class="service-card">
-            <div>
-              <h3 style="font-size:20px; font-weight:800; color:var(--text-primary); margin-bottom:6px;">Interactive 3D &amp; Real-time Systems</h3>
-              <p style="font-size:13px; color:var(--text-secondary);">สำหรับงานแบรนด์ที่ต้องการความว้าว หรือระบบสดระดับ Event / Concert</p>
-              
-              <div class="service-price-wrap">
-                <span style="font-size:13px; color:var(--text-muted);">เริ่มต้น</span>
-                <div class="service-price">฿25,000.-</div>
-              </div>
-
-              <ul class="service-features">
-                <li><span class="check-icon">✓</span> Three.js WebGL กราฟิก 3 มิติ ตอบสนองการเลื่อนและเมาส์</li>
-                <li><span class="check-icon">✓</span> การเชื่อมต่อ WebSockets แบบ Real-time ตอบสนองทันที</li>
-                <li><span class="check-icon">✓</span> แอนิเมชันลื่นไหล 60 FPS ปรับแต่งประสิทธิภาพสูงสุด</li>
-                <li><span class="check-icon">✓</span> ระบบสแกน QR Code / ตรวจสอบข้อมูลรวดเร็ว</li>
-                <li><span class="check-icon">✓</span> ซัพพอร์ตการขึ้นระบบจริง Cloudflare / Cloud Server</li>
-              </ul>
-            </div>
-
-            <button class="btn-fw-secondary trigger-brief-btn" style="width:100%;">
-              เลือกแพ็กเกจนี้ ↗
-            </button>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
 
     <!-- Footer -->
     <footer class="site-footer">
