@@ -995,8 +995,16 @@ body {
   text-align: center;
   max-width: 680px;
   margin: 0 auto 60px auto;
-  will-change: transform, opacity, filter;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  opacity: 0;
+  transform: translateY(45px);
+  filter: blur(8px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), filter 0.75s ease;
+}
+
+.section-head-center.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 
 .section-head-title {
@@ -1026,7 +1034,14 @@ body {
   position: relative;
   transform-style: preserve-3d;
   will-change: transform, box-shadow, opacity;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.25s ease;
+  opacity: 0;
+  transform: translateY(80px) scale(0.92);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.25s ease;
+}
+
+.work-card.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .work-card:hover {

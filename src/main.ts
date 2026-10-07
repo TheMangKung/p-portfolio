@@ -78,52 +78,68 @@ function handleScrollMotion() {
     heroCenter.style.opacity = `${Math.max(0, 1 - p * 1.15)}`;
   }
 
-  // 3. Gradual Expansion & Subsequent Fade-Out on Scroll ("พอเลื่อนขึ้นไออันนี้ก็จะขึ้นตามค่อยๆ จางหายไป")
-  if (profileWindow) {
-    if (scrollY <= 450) {
-      // Phase 1: Expanding into full view
-      const scale = 0.84 + 0.16 * p;
-      const translateY = (1 - p) * 60;
-      const opacity = 0.65 + 0.35 * p;
-      const radius = 38 - 10 * p;
-      profileWindow.style.transform = `scale(${scale}) translate3d(0, ${translateY}px, 0)`;
-      profileWindow.style.opacity = `${opacity}`;
-      profileWindow.style.borderRadius = `${radius}px`;
-    } else {
-      // Phase 2: Glides up and smoothly fades away as user scrolls into works
-      const fadeP = Math.min(Math.max((scrollY - 450) / 420, 0), 1);
-      const scale = 1 - fadeP * 0.05;
-      const translateY = -fadeP * 80;
-      const opacity = Math.max(0, 1 - fadeP * 1.25);
-      profileWindow.style.transform = `scale(${scale}) translate3d(0, ${translateY}px, 0)`;
-      profileWindow.style.opacity = `${opacity}`;
-      profileWindow.style.borderRadius = '28px';
+  // 2. Profile Window: Smooth expansion from Hero, STAYS 100% VISIBLE while reading, only fades when scrolling off top!
+  const aboutSection = document.getElementById('about');
+  if (profileWindow && aboutSection) {
+    const aboutRect = aboutSection.getBoundingClientRect();
+    const vh = window.innerHeight;
+
+    // Expansion as it enters from Hero
+    // expandProgress is 1 as soon as the top of #about reaches comfortable reading area
+    const expandProgress = Math.min(Math.max((vh - aboutRect.top) / (vh * 0.65), 0), 1);
+
+    // Fade-out ONLY starts when about section is scrolling off the top of the viewport
+    let exitFade = 1;
+    if (aboutRect.bottom < vh * 0.65) {
+      exitFade = Math.min(Math.max(aboutRect.bottom / (vh * 0.65), 0), 1);
     }
+
+    const scale = (0.88 + 0.12 * expandProgress) * (0.96 + 0.04 * exitFade);
+    const translateY = (1 - expandProgress) * 50 - (1 - exitFade) * 50;
+    const opacity = expandProgress * exitFade;
+
+    profileWindow.style.transform = `scale(${scale.toFixed(3)}) translate3d(0, ${translateY.toFixed(1)}px, 0)`;
+    profileWindow.style.opacity = `${opacity.toFixed(3)}`;
+    profileWindow.style.borderRadius = `${38 - 10 * expandProgress}px`;
   }
-
-  // 4. Staggered Cinematic Reveal for Case Studies (#works)
-  const worksHead = document.querySelector('.section-head-center') as HTMLElement | null;
-  const workCards = document.querySelectorAll('.work-card');
-
-  if (worksHead) {
-    const headP = Math.min(Math.max((scrollY - 360) / 360, 0), 1);
-    worksHead.style.opacity = `${headP}`;
-    worksHead.style.transform = `translate3d(0, ${(1 - headP) * 45}px, 0)`;
-  }
-
-  workCards.forEach((card, index) => {
-    const htmlCard = card as HTMLElement;
-    if (htmlCard.dataset.isHovered === 'true') return; // Don't override user hover tilt
-
-    const cardP = Math.min(Math.max((scrollY - (400 + index * 90)) / 360, 0), 1);
-    htmlCard.style.opacity = `${cardP}`;
-    htmlCard.style.transform = `translate3d(0, ${(1 - cardP) * 65}px, 0) scale(${0.94 + 0.06 * cardP})`;
-  });
 }
 
 window.addEventListener('scroll', handleScrollMotion, { passive: true });
 lenis.on('scroll', handleScrollMotion);
 handleScrollMotion(); // Initial tick
+
+// =======================================================
+// Staggered Cinematic Reveal for Case Studies (#works) via IntersectionObserver
+// =======================================================
+const worksSection = document.getElementById('works');
+const worksHead = document.querySelector('.section-head-center') as HTMLElement | null;
+const workCards = document.querySelectorAll('.work-card');
+
+if (worksSection) {
+  const worksObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Trigger staggered spring entrance
+        if (worksHead) worksHead.classList.add('is-visible');
+        workCards.forEach((card, idx) => {
+          setTimeout(() => {
+            (card as HTMLElement).classList.add('is-visible');
+          }, idx * 150);
+        });
+      } else {
+        // If user scrolls back up past #works, reset so it re-animates smoothly
+        if (entry.boundingClientRect.top > window.innerHeight) {
+          if (worksHead) worksHead.classList.remove('is-visible');
+          workCards.forEach((card) => {
+            (card as HTMLElement).classList.remove('is-visible');
+          });
+        }
+      }
+    });
+  }, { threshold: 0.12 });
+
+  worksObserver.observe(worksSection);
+}
 
 // =======================================================
 // Interactive 3D Magnetic Tilt & Cursor Glare on Work Cards
