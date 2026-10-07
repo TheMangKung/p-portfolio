@@ -19,9 +19,10 @@ function raf(time: number) {
 requestAnimationFrame(raf);
 
 // =======================================================
-// 3. Orbit Cards Scatter Motion on Scroll
+// 3. Orbit Cards Scatter & Profile Window Gradual Expansion on Scroll
 // =======================================================
 const heroCenter = document.getElementById('hero-center');
+const profileWindow = document.getElementById('profile-window');
 const cardTopLeft = document.querySelector('.pos-top-left') as HTMLElement | null;
 const cardBottomLeft = document.querySelector('.pos-bottom-left') as HTMLElement | null;
 const cardTopRight = document.querySelector('.pos-top-right') as HTMLElement | null;
@@ -31,10 +32,10 @@ const cardMidRight = document.querySelector('.pos-mid-right') as HTMLElement | n
 
 function handleScrollMotion() {
   const scrollY = window.scrollY || window.pageYOffset;
-  const maxScroll = Math.max(window.innerHeight * 0.55, 320);
+  const maxScroll = Math.max(window.innerHeight * 0.55, 340);
   const p = Math.min(Math.max(scrollY / maxScroll, 0), 1); // 0 to 1
 
-  // Scatter Orbit Cards Outward
+  // 1. Scatter Orbit Cards Outward
   if (cardTopLeft) {
     cardTopLeft.style.transform = `translate3d(${-260 * p}px, ${-180 * p}px, 0) rotate(${-4 - 12 * p}deg) scale(${1 - 0.25 * p})`;
     cardTopLeft.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
@@ -71,16 +72,56 @@ function handleScrollMotion() {
     cardMidRight.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
   }
 
-  // Smooth fade on center hero text
+  // 2. Smooth fade on center hero text
   if (heroCenter) {
     heroCenter.style.transform = `translate3d(0, ${-60 * p}px, 0)`;
     heroCenter.style.opacity = `${Math.max(0, 1 - p * 1.15)}`;
+  }
+
+  // 3. Gradual Expansion of Fastwork Profile Window ("เวลาเลื่อนมันจะค่อยๆขยาย")
+  if (profileWindow) {
+    const scale = 0.84 + 0.16 * p;
+    const translateY = (1 - p) * 60;
+    const opacity = 0.65 + 0.35 * p;
+    const radius = 38 - 10 * p;
+    profileWindow.style.transform = `scale(${scale}) translate3d(0, ${translateY}px, 0)`;
+    profileWindow.style.opacity = `${opacity}`;
+    profileWindow.style.borderRadius = `${radius}px`;
   }
 }
 
 window.addEventListener('scroll', handleScrollMotion, { passive: true });
 lenis.on('scroll', handleScrollMotion);
 handleScrollMotion(); // Initial tick
+
+// =======================================================
+// Tabs Navigation Logic (Fastwork Profile)
+// =======================================================
+const tabButtons = document.querySelectorAll('.fw-tab-btn');
+const tabPanels = document.querySelectorAll('.fw-tab-panel');
+
+function switchTab(tabId: string) {
+  tabButtons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-tab') === tabId);
+  });
+  tabPanels.forEach(panel => {
+    panel.classList.toggle('active', panel.id === `tab-panel-${tabId}`);
+  });
+}
+
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tabId = btn.getAttribute('data-tab');
+    if (tabId) switchTab(tabId);
+  });
+});
+
+document.querySelectorAll('.trigger-tab-services').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    switchTab('services');
+  });
+});
 
 // =======================================================
 // 4. Project Detail Modal Logic
