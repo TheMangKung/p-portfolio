@@ -36,75 +36,79 @@ const cardMidRight = document.querySelector('.pos-mid-right') as HTMLElement | n
 
 function handleScrollMotion() {
   const scrollY = window.scrollY || window.pageYOffset;
-  const maxScroll = Math.max(window.innerHeight * 0.55, 340);
-  const p = Math.min(Math.max(scrollY / maxScroll, 0), 1); // 0 to 1
+  const vh = window.innerHeight;
 
-  // 1. Scatter Orbit Cards Outward
+  // 1. Hero Content & Orbit Cards Scrub (pHero: 0 to 1 over first 70% of vh)
+  const pHero = Math.min(Math.max(scrollY / (vh * 0.70), 0), 1);
+  const cardOpacity = Math.max(0, 1 - pHero * 1.6);
+
+  // Orbit cards scatter outward
   if (cardTopLeft) {
-    cardTopLeft.style.transform = `translate3d(${-260 * p}px, ${-180 * p}px, 0) rotate(${-4 - 12 * p}deg) scale(${1 - 0.25 * p})`;
-    cardTopLeft.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
-    cardTopLeft.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+    cardTopLeft.style.transform = `translate3d(${-280 * pHero}px, ${-180 * pHero}px, 0) rotate(${-4 - 12 * pHero}deg) scale(${1 - 0.25 * pHero})`;
+    cardTopLeft.style.opacity = `${cardOpacity.toFixed(3)}`;
+    cardTopLeft.style.pointerEvents = pHero > 0.6 ? 'none' : 'auto';
   }
-
   if (cardBottomLeft) {
-    cardBottomLeft.style.transform = `translate3d(${-260 * p}px, ${180 * p}px, 0) rotate(${3 + 12 * p}deg) scale(${1 - 0.25 * p})`;
-    cardBottomLeft.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
-    cardBottomLeft.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+    cardBottomLeft.style.transform = `translate3d(${-260 * pHero}px, ${180 * pHero}px, 0) rotate(${3 + 12 * pHero}deg) scale(${1 - 0.25 * pHero})`;
+    cardBottomLeft.style.opacity = `${cardOpacity.toFixed(3)}`;
+    cardBottomLeft.style.pointerEvents = pHero > 0.6 ? 'none' : 'auto';
   }
-
   if (cardTopRight) {
-    cardTopRight.style.transform = `translate3d(${260 * p}px, ${-180 * p}px, 0) rotate(${4 + 12 * p}deg) scale(${1 - 0.25 * p})`;
-    cardTopRight.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
-    cardTopRight.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+    cardTopRight.style.transform = `translate3d(${280 * pHero}px, ${-180 * pHero}px, 0) rotate(${4 + 12 * pHero}deg) scale(${1 - 0.25 * pHero})`;
+    cardTopRight.style.opacity = `${cardOpacity.toFixed(3)}`;
+    cardTopRight.style.pointerEvents = pHero > 0.6 ? 'none' : 'auto';
   }
-
   if (cardBottomRight) {
-    cardBottomRight.style.transform = `translate3d(${260 * p}px, ${180 * p}px, 0) rotate(${-3 - 12 * p}deg) scale(${1 - 0.25 * p})`;
-    cardBottomRight.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
-    cardBottomRight.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+    cardBottomRight.style.transform = `translate3d(${260 * pHero}px, ${180 * pHero}px, 0) rotate(${-3 - 12 * pHero}deg) scale(${1 - 0.25 * pHero})`;
+    cardBottomRight.style.opacity = `${cardOpacity.toFixed(3)}`;
+    cardBottomRight.style.pointerEvents = pHero > 0.6 ? 'none' : 'auto';
   }
-
   if (cardMidLeft) {
-    cardMidLeft.style.transform = `translate3d(${-320 * p}px, ${-40 * p}px, 0) rotate(${2 - 8 * p}deg) scale(${1 - 0.25 * p})`;
-    cardMidLeft.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
-    cardMidLeft.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+    cardMidLeft.style.transform = `translate3d(${-320 * pHero}px, ${-30 * pHero}px, 0) rotate(${2 - 8 * pHero}deg) scale(${1 - 0.25 * pHero})`;
+    cardMidLeft.style.opacity = `${cardOpacity.toFixed(3)}`;
+    cardMidLeft.style.pointerEvents = pHero > 0.6 ? 'none' : 'auto';
   }
-
   if (cardMidRight) {
-    cardMidRight.style.transform = `translate3d(${320 * p}px, ${40 * p}px, 0) rotate(${-5 + 8 * p}deg) scale(${1 - 0.25 * p})`;
-    cardMidRight.style.opacity = `${Math.max(0, 1 - p * 1.35)}`;
-    cardMidRight.style.pointerEvents = p > 0.8 ? 'none' : 'auto';
+    cardMidRight.style.transform = `translate3d(${320 * pHero}px, ${30 * pHero}px, 0) rotate(${-5 + 8 * pHero}deg) scale(${1 - 0.25 * pHero})`;
+    cardMidRight.style.opacity = `${cardOpacity.toFixed(3)}`;
+    cardMidRight.style.pointerEvents = pHero > 0.6 ? 'none' : 'auto';
   }
 
-  // 2. Smooth fade on center hero text
+  // 2. Hero Center Text: Pinned stationary in center, blurs until pure white bloom!
+  // ("ตัวข้อความจะไม่ไหลตาม ตัวข้อความจะอยู่ที่เดิมแต่จะเบลอจนขาวแทน")
   if (heroCenter) {
-    heroCenter.style.transform = `translate3d(0, ${-60 * p}px, 0)`;
-    heroCenter.style.opacity = `${Math.max(0, 1 - p * 1.15)}`;
+    heroCenter.style.transform = 'translate3d(0, 0, 0)'; // Locked in center!
+    const blur = pHero * 28; // 0px to 28px
+    const brightness = 1 + pHero * 2.2; // 1 to 3.2 (blooms into pure white!)
+    const opacity = Math.max(0, 1 - pHero * 2.0); // fades out into white bloom
+
+    heroCenter.style.filter = `blur(${blur.toFixed(1)}px) brightness(${brightness.toFixed(2)})`;
+    heroCenter.style.opacity = `${opacity.toFixed(3)}`;
+    heroCenter.style.pointerEvents = pHero > 0.35 ? 'none' : 'auto';
   }
 
-  // 2. Profile Window: Smooth expansion from Hero, STAYS 100% VISIBLE while reading, only fades when scrolling off top!
-  const aboutSection = document.getElementById('about');
-  if (profileWindow && aboutSection) {
-    const aboutRect = aboutSection.getBoundingClientRect();
-    const vh = window.innerHeight;
+  // 3. Fastwork Profile Window: Takes over the center stage as text blurs white!
+  // ("จนโปรไฟล์มาแทนที เหมือนเลื่อนแต่จอไม่เลื่อน")
+  const heroScene = document.getElementById('hero-scene');
+  const trackHeight = heroScene ? heroScene.offsetHeight : vh * 2.5;
 
-    // Expansion as it enters from Hero
-    // expandProgress is 1 as soon as the top of #about reaches comfortable reading area
-    const expandProgress = Math.min(Math.max((vh - aboutRect.top) / (vh * 0.65), 0), 1);
+  // Profile morph entrance (from scrollY = vh * 0.28 to vh * 0.85)
+  const pProfile = Math.min(Math.max((scrollY - vh * 0.28) / (vh * 0.55), 0), 1);
 
-    // Fade-out ONLY starts when about section is scrolling off the top of the viewport
-    let exitFade = 1;
-    if (aboutRect.bottom < vh * 0.65) {
-      exitFade = Math.min(Math.max(aboutRect.bottom / (vh * 0.65), 0), 1);
-    }
+  // Exit fade when user scrolls towards bottom of pinned scene (past vh * 1.5)
+  const scrollRemaining = trackHeight - scrollY - vh;
+  const exitFade = Math.min(Math.max(scrollRemaining / (vh * 0.45), 0), 1);
 
-    const scale = (0.88 + 0.12 * expandProgress) * (0.96 + 0.04 * exitFade);
-    const translateY = (1 - expandProgress) * 50 - (1 - exitFade) * 50;
-    const opacity = expandProgress * exitFade;
+  if (profileWindow) {
+    const scale = (0.88 + 0.12 * pProfile) * (0.96 + 0.04 * exitFade);
+    const translateY = (1 - pProfile) * 50 - (1 - exitFade) * 40;
+    const opacity = pProfile * exitFade;
+    const blur = (1 - pProfile) * 12;
 
     profileWindow.style.transform = `scale(${scale.toFixed(3)}) translate3d(0, ${translateY.toFixed(1)}px, 0)`;
     profileWindow.style.opacity = `${opacity.toFixed(3)}`;
-    profileWindow.style.borderRadius = `${38 - 10 * expandProgress}px`;
+    profileWindow.style.filter = blur > 0.2 ? `blur(${blur.toFixed(1)}px)` : 'none';
+    profileWindow.style.pointerEvents = pProfile > 0.65 && exitFade > 0.4 ? 'auto' : 'none';
   }
 }
 
@@ -234,6 +238,27 @@ tabButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const tabId = btn.getAttribute('data-tab');
     if (tabId) switchTab(tabId);
+  });
+});
+
+// =======================================================
+// Fastwork Floating Navbar Language Switcher & Smooth Links
+// =======================================================
+const langBtn = document.getElementById('lang-switch-btn');
+const langText = document.getElementById('lang-text');
+let currentLang = 'EN';
+if (langBtn && langText) {
+  langBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'EN' ? 'TH' : 'EN';
+    langText.textContent = currentLang;
+  });
+}
+
+// Smooth scroll to profile when clicking "แนะนำตัว & ประวัติ ↓"
+document.querySelectorAll('a[href="#about"]').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    lenis.scrollTo(window.innerHeight * 0.95);
   });
 });
 

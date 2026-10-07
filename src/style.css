@@ -49,100 +49,134 @@ body {
   z-index: 2;
 }
 
-/* Header Navigation */
-.site-nav {
+/* =======================================================
+   FASTWORK SIGNATURE FLOATING PILL NAVBAR
+   (Exact Match to Fastwork Selling Reference Image)
+======================================================= */
+.fw-floating-nav {
   position: fixed;
-  top: 0;
+  top: 14px;
   left: 0;
   width: 100%;
-  z-index: 100;
-  padding: 16px 36px;
   display: flex;
+  justify-content: center;
+  z-index: 999;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.fw-nav-capsule {
+  pointer-events: auto;
+  width: min(984px, 100%);
+  height: 52px;
+  background: #1b1f28;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
-  transition: all 0.3s ease;
+  padding: 0 8px 0 22px;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.nav-brand {
+.fw-nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
+  user-select: none;
 }
 
-.nav-avatar {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+.fw-nav-logo-icon {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
 }
 
-.nav-brand-text {
-  display: flex;
-  flex-direction: column;
+.fw-nav-brand:hover .fw-nav-logo-icon {
+  transform: rotate(20deg);
 }
 
-.brand-name {
-  font-size: 15px;
+.fw-nav-logo-text {
+  font-family: 'Plus Jakarta Sans', var(--font-main);
+  font-size: 19px;
   font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.2;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
-.brand-badge {
-  font-size: 11px;
-  color: var(--fw-blue);
-  font-weight: 600;
-}
-
-.nav-center-links {
+.fw-nav-actions {
   display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.nav-link {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.nav-link:hover {
-  color: var(--fw-blue);
-}
-
-.nav-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.status-pill {
-  display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  color: #15803d;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 14px;
-  border-radius: 999px;
 }
 
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #16a34a;
-  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+.fw-nav-lang-btn {
+  height: 38px;
+  background: #343a47;
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.fw-nav-lang-btn:hover {
+  background: #424959;
+}
+
+.fw-nav-get-started-btn {
+  height: 38px;
+  background: #11141b;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.fw-nav-get-started-btn:hover {
+  background: #000000;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .fw-floating-nav {
+    top: 10px;
+    padding: 0 10px;
+  }
+  .fw-nav-capsule {
+    height: 46px;
+    padding: 0 6px 0 14px;
+  }
+  .fw-nav-logo-text {
+    font-size: 17px;
+  }
+  .fw-nav-lang-btn {
+    height: 34px;
+    padding: 0 10px;
+    font-size: 12.5px;
+  }
+  .fw-nav-get-started-btn {
+    height: 34px;
+    padding: 0 14px;
+    font-size: 12.5px;
+  }
 }
 
 /* Fastwork Buttons */
@@ -196,28 +230,37 @@ body {
 }
 
 /* =======================================================
-   HERO ORBIT STAGE (Fastwork Selling Style)
+   HERO & PROFILE PINNED MORPH SCENE ("เหมือนเลื่อนแต่จอไม่เลื่อน")
 ======================================================= */
-.hero-stage {
+.hero-pinned-scene {
   position: relative;
-  min-height: 100vh;
-  padding-top: 100px;
+  height: 250vh;
+  background: #ffffff;
+}
+
+.hero-sticky-frame {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 40%, rgba(240, 246, 255, 0.7) 0%, rgba(255, 255, 255, 0) 70%);
   overflow: hidden;
+  background: radial-gradient(circle at 50% 45%, rgba(240, 246, 255, 0.75) 0%, rgba(255, 255, 255, 0) 72%);
 }
 
 .hero-center-content {
-  position: relative;
+  position: absolute;
   z-index: 10;
   text-align: center;
   max-width: 820px;
   padding: 0 24px;
-  margin: auto 0;
-  transition: all 0.5s ease;
+  margin: 0 auto;
+  will-change: filter, opacity;
+  pointer-events: auto;
 }
 
 .hero-eyebrow {
@@ -437,27 +480,43 @@ body {
 }
 
 /* =======================================================
-   FASTWORK EXPANDING PROFILE WINDOW (Signature Fastwork Selling)
+   FASTWORK PROFILE MORPH LAYER (Signature Fastwork Selling)
 ======================================================= */
-.profile-expand-section {
-  position: relative;
+.profile-morph-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 24px 24px 24px;
   z-index: 20;
-  padding: 40px 24px 120px 24px;
-  background: #ffffff;
-  overflow: visible;
+  pointer-events: none;
 }
 
 .fw-profile-window {
   background: #ffffff;
   border: 1px solid rgba(226, 232, 240, 0.95);
   border-radius: 28px;
-  box-shadow: 0 30px 80px -20px rgba(15, 23, 42, 0.08), 0 4px 18px -2px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 30px 80px -20px rgba(15, 23, 42, 0.09), 0 4px 18px -2px rgba(15, 23, 42, 0.03);
   max-width: 1160px;
+  width: 100%;
+  max-height: calc(100vh - 96px);
+  max-height: calc(100svh - 96px);
+  overflow-y: auto;
   margin: 0 auto;
-  padding: 40px 44px;
-  transform-origin: center top;
-  will-change: transform, opacity, border-radius;
+  padding: 36px 40px;
+  transform-origin: center center;
+  will-change: transform, opacity, filter;
   transition: box-shadow 0.3s ease;
+  pointer-events: auto;
+}
+
+.fw-profile-window::-webkit-scrollbar {
+  width: 5px;
+}
+.fw-profile-window::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
 }
 
 .fw-profile-eyebrow {
