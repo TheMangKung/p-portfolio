@@ -1,93 +1,99 @@
-# 🤖 Antigravity AI Handover & Context Guide (คู่มือส่งต่องานสำหรับ Antigravity)
-
-> **สำหรับ AI Agent (Antigravity) บนเครื่องใหม่:**  
-> โปรดอ่านเอกสารนี้ทันทีเมื่อเริ่มเซสชัน เพื่อรับทราบประวัติ บริบทโปรเจกต์ โครงสร้างไฟล์ และสิ่งที่ต้องทำต่อร่วมกับผู้ใช้ **P** โดยไม่ต้องเริ่มถามใหม่จากศูนย์
-
----
-
-## 👤 ข้อมูลเจ้าของโปรเจกต์ (User Persona)
-- **ชื่อ / นามปากกา:** P (`@p_dev`)
-- **ตำแหน่ง / ความเชี่ยวชาญ:** Senior Full-Stack Developer & UI/UX Designer
-- **GitHub:** [TheMangKung](https://github.com/TheMangKung)
-- **สไตล์การทำงานที่ผู้ใช้ระบุไว้:** *"แก้ไปถามไปนะ"* (ทำทีละส่วน ปรับแต่งละเอียด ชวนคุยและสอบถามความพึงพอใจเป็นระยะ ไม่เปลี่ยนโค้ดก้าวกระโดดโดยไม่แจ้ง)
+# 📋 บันทึกความคืบหน้า & แฮนด์โอเวอร์ (Project Handover Note)
+> **สำหรับเจ้าของโปรเจกต์ (P) และ AI Agent ในเซสชันถัดไป**  
+> *บันทึกเมื่อ: 8 ตุลาคม 2026 เวลา 00:58 น.*
 
 ---
 
-## 🎯 เป้าหมายของโปรเจกต์ (Project Mission)
-สร้างเว็บไซต์ **Personal Portfolio** ที่ถอดแบบดีไซน์จาก **[fastwork.com](https://fastwork.com/)** (Next-Gen Creator Platform) 100% ทั้งความลื่นไหล (Smoothness), ฟิสิกส์ 3D Orbit, Vector Brush Loop บนคำว่า *"you"*, สีสัน, ฟอนต์ และจัดเต็มความพรีเมียม เพื่อใช้รับงานฟรีแลนซ์ระดับโปรดักชัน
+## 🎯 สรุปสถานะปัจจุบันของระบบ (Current System Status)
 
-### 3 ผลงานหลักที่ผู้ใช้สร้างจริง (Verified Showcase Projects):
-1. **Live Screen Shoutout — Sangjan** ([https://sangjan.com/](https://sangjan.com/))
-   - *สถานะ:* **Commercial B2B SaaS (สร้างจริงและขายได้แล้ว)**
-   - *เทคโนโลยี:* React, Node.js, WebSocket High-Concurrency, Tailwind CSS, Live Moderation
-   - *สโคป:* ส่งภาพ & ข้อความขึ้นจอ LED ใหญ่สดทันทีในงานอีเวนต์/คอนเสิร์ต Latency < 200ms
-2. **WUSAB.net — องค์การบริหาร องค์การนักศึกษา ม.วลัยลักษณ์** ([https://www.wusab.net/](https://www.wusab.net/))
-   - *สถานะ:* **University Enterprise Portal (พัฒนาเพื่อนักศึกษาและมหาวิทยาลัยฟรี)**
-   - *เทคโนโลยี:* React / Next.js, TypeScript, Tailwind CSS, Design System
-   - *สโคป:* พอร์ทัลศูนย์กลางข้อมูลข่าวสารและกิจกรรม รองรับนักศึกษากว่า 15,000 คน (Lighthouse 98/100)
-3. **Check in - SAB of Walailak U. (OpenWorld)** ([https://openworld.wusab.net/](https://openworld.wusab.net/))
-   - *สถานะ:* **High-Traffic Event Attendance Web App (พัฒนาเพื่อนักศึกษาฟรี)**
-   - *เทคโนโลยี:* React, TypeScript, QR Scanner Verification, Real-Time DB
-   - *สโคป:* ระบบเช็กอินเข้าร่วมกิจกรรมระดับมหาวิทยาลัย สแกนตรวจสอบสิทธิ์รวดเร็วใน 1 วินาที Uptime 99.99%
+โปรเจกต์นี้ได้รับการรีแฟกเตอร์จากดีไซน์เดิมสู่ **Clean White Fastwork Selling Aesthetic** ผสานความพรีเมียมระดับ Awwwards โดยถอด Three.js 3D Background ออกทั้งหมด เพื่อให้เว็บโหลดเร็วสุดขีด (~150 KB) สะอาด คลีน หรูหรา สไตล์สีขาว-เทาอ่อน
+
+### 1. Floating Glassmorphism Navbar (`neowhite`)
+- **รูปทรงแคปซูลลอยด้านบน (Floating Pill Capsule):**
+  - กว้าง `min(984px, 100%)` สูง `52px` ลอยตรึง `position: fixed; top: 14px;`
+  - พื้นหลังโปร่งแสงสไตล์กระจกฝ้าแท้: `background: rgba(18, 22, 32, 0.65)` พร้อม `backdrop-filter: blur(20px) saturate(180%)`
+  - ขอบสะท้อนแสงกระจก: `border: 1px solid rgba(255, 255, 255, 0.16)` และ `inset 0 1px 1px rgba(255, 255, 255, 0.22)`
+- **องค์ประกอบภายใน:**
+  - **ฝั่งซ้าย:** โลโก้ Knot ขาวแบบเวกเตอร์แท้ + ชื่อแบรนด์ **`neowhite`**
+  - **ฝั่งขวา:** ปุ่ม CTA แคปซูล **`[ Get started ]`** สไตล์กระจกฝ้า (คลิกเพื่อเปิด Briefing Modal ทันที)
+  - **ตัดปุ่ม EN/TH ออกแล้ว** ตามคำสั่งล่าสุด
 
 ---
 
-## 🏗️ โครงสร้างไฟล์และสถาปัตยกรรม (Architecture: Brutalist Three.js Edition)
-- **Framework & Build Tool:** Vite + TypeScript + Three.js + Lenis Smooth Scroll + Canvas Confetti
-- **Design Aesthetic:** **Brutalist & Raw Modern (Anti AI-Slop)**
-  - ฟอนต์: `Space Grotesk` (Display Headings) + `Space Mono` (Technical Telemetry & Code Badges)
-  - ธีม: Deep Obsidian `#08090b`, Raw Grid Lines, High Contrast, Stark White, Electric Cyan `#00f0ff`
-- **3D WebGL Engine (`src/Experience/`):** สถาปัตยกรรมระดับสากล **Experience & World Pattern**:
-  - `Experience.ts`: Main Singleton Coordinator
-  - `Camera.ts`: PerspectiveCamera with smooth mouse parallax & scroll progress gliding
-  - `Renderer.ts`: ACESFilmicToneMapping, PCFSoftShadowMap, high-performance WebGL
-  - `Utils/Sizes.ts`: Viewport resize & clamped pixel ratio
-  - `Utils/Time.ts`: Delta-time animation loop
-  - `Utils/Raycaster.ts`: Interactive 3D Card Hover & Click Raycasting
-  - `World/Environment.ts`: Dramatic studio rim lighting & subtle distance fog
-  - `World/GridFloor.ts`: Raw perspective wireframe grid & particle dust
-  - `World/ProjectTiles.ts`: 3D Floating Glass Slabs with Canvas Textures and Bevel Wireframes (Sangjan, WUSAB, OpenWorld)
-- **HTML/DOM Layer:**
-  - `index.html`: Raw brutalist layout, live clock Bangkok UTC+7, project grid, engineering matrix
-  - Modals: `#project-detail-modal` (3D inspect drawer) และ `#brief-modal` (Direct Briefing with Confetti)
+### 2. Pinned Morph Scene: "เหมือนเลื่อนแต่จอไม่เลื่อน"
+- **การตรึงหน้าจอ (Sticky Pinned Stage):**
+  - คอนเทนเนอร์ `#hero-scene` มีความสูง `250vh` โดยมี `.hero-sticky-frame` ตรึงติดที่ `top: 0; height: 100vh;`
+  - ในระหว่างที่เลื่อนลูกกลิ้งเมาส์ หน้าจอจะไม่ไหลหนี แต่จะตรึงนิ่งกลางสายตาเพื่อเล่นทรานซิชัน
+- **พฤติกรรมของข้อความกึ่งกลาง ("ตัวข้อความอยู่ที่เดิม แต่เบลอจนขาว"):**
+  - `heroCenter` ถูกล็อคตำแหน่ง `translate3d(0, 0, 0)` ไม่ขยับขึ้นหรือลง
+  - ขยายการเบลอและแสงเรืองสีขาว: `filter: blur(0px -> 28px) brightness(1 -> 3.2)`
+  - ตัวหนังสือกระจายแสงกลายเป็นสีขาวเนียนตา (`White Bloom`) และจางหายไป
+- **การ์ดรอบข้าง 6 ใบ (Orbit Cards):**
+  - บินกระจายหลบออกไปยังขอบจอและมุมทั้ง 4 ทิศทาง พร้อมจางหายอย่างนุ่มนวล
+- **หน้าต่างโปรไฟล์เข้ามาแทนที่ตรงกลาง (Fastwork Profile Window):**
+  - เมื่อข้อความเบลอเป็นสีขาว หน้าต่างโปรไฟล์จะสเกลขึ้นจาก `0.88 -> 1.0` และปรับจากเบลอ `12px -> 0px`
+  - เข้ามาแทนที่ตำแหน่งกึ่งกลางหน้าจออย่างพอดีเป๊ะ พร้อมให้อ่านเนื้อหาและคลิกแท็บได้ครบถ้วน
 
 ---
 
-## 🔄 ระบบ Git & Git Time Machine ที่เชื่อมต่ออยู่
-- **GitHub Repository:** [https://github.com/TheMangKung/p-portfolio](https://github.com/TheMangKung/p-portfolio) (Branch: `main`)
-- **Git Control Center (Git Time Machine):** 
-  - แอป Desktop ควบคุม Git DAG สไตล์ n8n Workflow ที่พัฒนาโดยผู้ใช้ ([https://github.com/TheMangKung/n8n-git-control-center](https://github.com/TheMangKung/n8n-git-control-center))
-  - มีฟังก์ชัน **Save Checkpoint** (Commit + Push อัตโนมัติ), **Sync Overwrite** (Fetch + Hard Reset อัตโนมัติ), และ **Clone จาก GitHub** ใน 1 คลิก
+### 3. Fastwork Creator Profile Window (Image 1 Style)
+- **ข้อมูลผู้พัฒนา:**
+  - Avatar, ป้ายสถานะออนไลน์สีเขียว, ชื่อ `P (พี) // Full-Stack Architect`, แฮนเดิล `@TheMangKung`
+  - สถิติ 4 ช่อง: `฿1M+ Project Value`, `100% On-Time`, `< 15m Response`, `★ 5.0 Reviews`
+  - ป้ายแท็ก: `Full-Stack Web`, `SaaS Architecture`, `High-Concurrency`, `📍 Bangkok, Thailand`
+- **ระบบแท็บ (Tab Navigation):**
+  - `Portfolio (ผลงาน)`: แสดงการ์ดโปสเตอร์ทรงสูง 3 ผลงานหลัก (`Sangjan`, `WUSAB.net`, `OpenWorld`)
+  - `Reviews (รีวิว)`: แสดงการ์ดรีวิวระดับ 5 ดาวจากลูกค้าจริง
+  - `About (ประวัติ)`: ประวัติการทำงานและสกิลเทคโนโลยี
+  - *(แท็บ Services และกล่องบริการด้านข้าง ถูกตัดออกทั้งหมดตามสั่ง)*
 
 ---
 
-## 🚀 วิธีเริ่มงานบนเครื่องใหม่ (สำหรับรันเซิร์ฟเวอร์)
-เมื่อโคลนโปรเจกต์ลงเครื่องใหม่แล้ว (ไม่ว่าจะเป็น Mac หรือ Windows):
+### 4. Verified Case Studies Section (`#works`)
+- **ไทม์ไลน์เชื่อมต่อหลังจากโปรไฟล์เลื่อนหาย (Choreographed GSAP Timeline):**
+  - เมื่อเลื่อนผ่านโปรไฟล์ หน้าต่างโปรไฟล์จะค่อยๆ จางและเลื่อนขึ้น
+  - ข้อความหัวเรื่องจะลอยขึ้นมาทีละบรรทัดอย่างสง่างาม:
+    1. ป้ายแท็ก `VERIFIED CASE STUDIES` ลอยขึ้นมา
+    2. หัวข้อ `ผลงานจริงที่เปิดให้บริการแล้ว` ชัดขึ้นมาจาก Blur Dissolve
+    3. คำอธิบาย `ระบบที่ผ่านการทดสอบและรองรับผู้ใช้งานจริงระดับโปรดักชัน` ลอยขึ้นมารองรับ
+  - **การ์ดผลงาน 3 ใบเด้งป๊อปอัปทีละใบ (Stagger Spring Reveal):**
+    - เด้งขึ้นมาเรียงลำดับ: `Sangjan` $\rightarrow$ `WUSAB` $\rightarrow$ `OpenWorld` ด้วยจังหวะสปริง `back.out(1.4)`
+    - ตัดจุดสถานะกระพริบออกทั้งหมด (Clean White)
+    - รองรับ 3D Magnetic Cursor Tilt เมื่อเลื่อนเมาส์ชี้บนการ์ด
+
+---
+
+## 🛠️ โครงสร้างไฟล์และโค้ดสำคัญ
+
+| ไฟล์ | รายละเอียด |
+| :--- | :--- |
+| `index.html` | โครงสร้าง HTML ทั้งหมด (Navbar, Pinned Scene, Profile Window, Works Grid, Modals) |
+| `src/style.css` | สไตล์ชีต CSS ทั้งหมด รวมถึง Glassmorphism, Pinned Frame, Typography, Responsive |
+| `src/main.ts` | ลอจิก Lenis Smooth Scroll, Pinned Scrub Frame-by-Frame, GSAP ScrollTrigger, Tabs, Modals |
+| `src/data/portfolioData.ts` | ฐานข้อมูลผลงาน 3 ตัวจริง (`sangjan`, `wusab`, `openworld`) |
+| `generate_dag.py` | สคริปต์สร้าง Git Time Machine DAG สำหรับ `n8n-git-control-center` |
+
+---
+
+## 🚀 วิธีเริ่มรันต่อในวันพรุ่งนี้
+
 ```bash
-# 1. ติดตั้ง Dependencies (ทำครั้งแรก)
-npm install
+# 1. เข้าโฟลเดอร์โปรเจกต์
+cd D:\Projects\p-portfolio
 
-# 2. รัน Local Dev Server
+# 2. รัน Dev Server
 npm run dev
-# เข้าชมได้ที่: http://localhost:5173/
+# เปิดเบราว์เซอร์ที่: http://localhost:5173/
+
+# 3. บิลด์ทดสอบ Production
+npm run build
 ```
 
 ---
 
-## 📋 Roadmaps & สิ่งที่ต้องทำต่อร่วมกับผู้ใช้ (Next Steps)
+## 📌 แผนงานที่จะทำต่อพรุ่งนี้ (Next Steps)
 
-Antigravity บนเครื่องใหม่สามารถเสนอและชวนผู้ใช้ทำตามลำดับหัวข้อนี้ได้เลย:
-
-1. **ปรับแต่งรูปภาพจริงของผลงาน 3 ตัวในหน้าเว็บ:**
-   - นำภาพหน้าจอของ **Sangjan**, **WUSAB.net** และ **OpenWorld Check-in** มาใส่แทนรูปสต็อกของ Fastwork เดิมใน Feed / Gallery
-2. **ปรับแต่งหมวดหมู่บริการ & ราคา (Services & Pricing):**
-   - ตรวจสอบกับผู้ใช้ว่าต้องการปรับราคาแพ็กเกจบริการใน `src/data/portfolioData.ts` เช่น งานพัฒนา Landing Page, งาน SaaS, หรืองาน Custom Web App หรือไม่
-3. **เชื่อมต่อระบบส่งบรีฟงาน (Direct Briefing Webhook):**
-   - ปัจจุบันปุ่ม *"ส่งบรีฟงาน"* มีฟอร์มสวยงามและกดคัดลอกสรุปบรีฟงานได้แล้ว
-   - สามารถเสนอผู้ใช้เชื่อมต่อระบบแจ้งเตือนอัตโนมัติ เช่น **LINE Notify**, **Discord Webhook**, หรือส่งเข้า **n8n Workflow** ที่ผู้ใช้ใช้อยู่
-4. **Deploy ขึ้น Production:**
-   - เมื่อปรับแต่งจนผู้ใช้พอใจ สามารถแนะนำการ Deploy ผ่าน Vercel, Netlify, หรือ GitHub Pages พร้อมผูก Custom Domain ได้ทันที
-
----
-
-> 💡 **คำแนะนำสำหรับ AI:** ให้เกียรติโค้ด CSS ต้นฉบับและฟังก์ชัน Modal ที่มีอยู่แล้วเสมอ รันเช็ก `http://localhost:5173/` ทุกครั้งหลังแก้โค้ด เพื่อให้มั่นใจว่าหน้าเว็บแสดงผลสมบูรณ์ 100%
+1. **อัปเดตรูปผลงานจริง:** เปลี่ยนรูปปก/รูปในพอร์ตให้เป็นภาพหน้าจอจริงของทั้ง 3 โปรเจกต์ (`Sangjan`, `WUSAB.net`, `OpenWorld`)
+2. **ปรับแต่งเนื้อหาประวัติ / ข้อมูลติดต่อ:** ใส่ช่องทางติดต่อจริง (Discord, LINE, Email, GitHub)
+3. **เชื่อมต่อ Webhook สำหรับระบบบรีฟงาน:** สามารถเชื่อมฟอร์มส่งบรีฟงานเข้า Discord Webhook, Telegram หรือ n8n Workflow ได้ทันที
+4. **Deploy ขึ้น Production Hosting:** เช่น Vercel / Cloudflare Pages
