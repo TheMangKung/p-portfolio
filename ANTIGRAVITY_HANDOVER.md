@@ -32,15 +32,24 @@
 
 ---
 
-## 🏗️ โครงสร้างไฟล์และเทคโนโลยีที่ใช้ (Architecture)
-- **Framework & Build Tool:** Vite + React + TypeScript + Tailwind CSS
-- **Design System:** สกัดและ Unscope CSS มาจาก Fastwork.com ดั้งเดิม (`src/fastwork.css` ~270KB)
-- **Assets (94 รายการ):** ดาวน์โหลดมาเก็บไว้ใน Local ครบถ้วนที่ `public/selling/`, `public/fonts/`, `public/_app/` (ไม่พึ่งพา Hotlink ภายนอก ทำให้เปิดออฟไลน์หรือโฮสต์ที่ไหนก็ไม่พัง)
-- **ไฟล์สำคัญในโฟลเดอร์:**
-  - `index.html`: หน้าหลัก Landing Page, 3D Orbit Stage, SvelteKit Shell, Interactive Brief Modal พร้อมเอฟเฟกต์ Confetti และ Featured Projects Showcase Modal
-  - `src/data/portfolioData.ts`: โมเดลข้อมูลส่วนตัว, แพ็กเกจราคาบริการ, รีวิว, รายละเอียด Case Studies
-  - `sync_n8n_git.bat`: สคริปต์ซิงก์ Git Graph เข้าแอป Git Time Machine
-  - `package.json`: Dependencies และ Script รันงาน
+## 🏗️ โครงสร้างไฟล์และสถาปัตยกรรม (Architecture: Brutalist Three.js Edition)
+- **Framework & Build Tool:** Vite + TypeScript + Three.js + Lenis Smooth Scroll + Canvas Confetti
+- **Design Aesthetic:** **Brutalist & Raw Modern (Anti AI-Slop)**
+  - ฟอนต์: `Space Grotesk` (Display Headings) + `Space Mono` (Technical Telemetry & Code Badges)
+  - ธีม: Deep Obsidian `#08090b`, Raw Grid Lines, High Contrast, Stark White, Electric Cyan `#00f0ff`
+- **3D WebGL Engine (`src/Experience/`):** สถาปัตยกรรมระดับสากล **Experience & World Pattern**:
+  - `Experience.ts`: Main Singleton Coordinator
+  - `Camera.ts`: PerspectiveCamera with smooth mouse parallax & scroll progress gliding
+  - `Renderer.ts`: ACESFilmicToneMapping, PCFSoftShadowMap, high-performance WebGL
+  - `Utils/Sizes.ts`: Viewport resize & clamped pixel ratio
+  - `Utils/Time.ts`: Delta-time animation loop
+  - `Utils/Raycaster.ts`: Interactive 3D Card Hover & Click Raycasting
+  - `World/Environment.ts`: Dramatic studio rim lighting & subtle distance fog
+  - `World/GridFloor.ts`: Raw perspective wireframe grid & particle dust
+  - `World/ProjectTiles.ts`: 3D Floating Glass Slabs with Canvas Textures and Bevel Wireframes (Sangjan, WUSAB, OpenWorld)
+- **HTML/DOM Layer:**
+  - `index.html`: Raw brutalist layout, live clock Bangkok UTC+7, project grid, engineering matrix
+  - Modals: `#project-detail-modal` (3D inspect drawer) และ `#brief-modal` (Direct Briefing with Confetti)
 
 ---
 
